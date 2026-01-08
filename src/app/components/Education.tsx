@@ -7,10 +7,10 @@ export function Education() {
 
   const education = [
     {
-      degree: "Master's in Information Systems Management",
-      institution: "University of Maryland – Robert H. Smith School of Business",
-      year: "Aug 2023 – Dec 2024",
-      gpa: "GPA: 3.7",
+      degree: "Master's in AI Information Systems Management",
+      institution: "Florida International University ",
+      year: "Jan 25 - April 26",
+      gpa: "GPA: 3.9",
       logo: "/path-to-umd-logo.png", // You'll need to add this image
     },
     {
