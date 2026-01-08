@@ -21,7 +21,7 @@ export function Footer() {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-bold bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent">
-              John Anderson
+              Rithanya Sekar
             </h3>
             <p className="text-muted-foreground mt-2">
               AI • Analytics • Strategy • Systems Thinking
