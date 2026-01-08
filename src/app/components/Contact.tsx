@@ -31,6 +31,12 @@ export function Contact() {
     { icon: Github, label: "GitHub", url: "https://github.com/Rithanya918", color: "hover:text-white" },
   ];
 
+  const contactInfo = [
+    { icon: Mail, label: "Email", value: "contact@johndoe.com" },
+    { icon: Phone, label: "Phone", value: "+1 (555) 123-4567" },
+    { icon: MapPin, label: "Location", value: "San Francisco, CA" },
+  ];
+
   return (
     <section id="contact" className="min-h-screen py-20 px-6 relative overflow-hidden">
       {/* Animated background gradient */}
