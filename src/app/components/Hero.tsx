@@ -58,7 +58,7 @@ export function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            AI • Analytics • Strategy
+            AI & Analytics Professional | Systems Thinker | Tech Strategist
           </motion.p>
           
           <motion.h1
@@ -67,7 +67,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            John Anderson
+            Rithanya Sekar
           </motion.h1>
           
           <motion.p
@@ -76,7 +76,8 @@ export function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Transforming data into strategic decisions through
+            Transforming complex data into actionable insights. Building
+            intelligent systems that drive business growth and innovation.
             <span className="text-primary"> AI-powered insights</span> and
             <span className="text-primary"> systems thinking</span>
           </motion.p>
