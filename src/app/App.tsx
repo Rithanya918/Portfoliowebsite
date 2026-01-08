@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Navigation } from "./components/Navigation";
 import { Hero } from "./components/Hero";
-import { Education } from "./components/Education";
 import { Certifications } from "./components/Certifications";
 import { About } from "./components/About";
 import { Skills } from "./components/Skills";
@@ -23,7 +22,6 @@ export default function App() {
       
       <main>
         <Hero />
-        <Education />
         <Certifications />
         <About />
         <Skills />
