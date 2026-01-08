@@ -9,11 +9,11 @@ export function Contact() {
   const socialLinks = [
     { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/rithanya-sekar-/", color: "hover:text-[#0077B5]" },
     { icon: Github, label: "GitHub", url: "https://github.com/Rithanya918", color: "hover:text-white" },
-    { icon: Mail, label: "Email", url: "mailto:rseka002@fiu.edu", color: "hover:text-primary" },
+    { icon: Mail, label: "Email", url: "mailto:your.email@example.com", color: "hover:text-primary" },
   ];
 
   return (
-    <section id="contact" className="min-h-screen py-20 px-6 relative overflow-hidden">
+    <section id="contact" className="py-20 px-6 relative overflow-hidden">
       {/* Animated background gradient */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10"
@@ -32,7 +32,7 @@ export function Contact() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-5xl font-bold mb-6">
             Let's <span className="text-primary">Connect</span>
@@ -50,7 +50,7 @@ export function Contact() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center"
         >
-          <div className="space-y-8">
+          <div className="space-y-6">
             <h3 className="text-2xl font-semibold text-center">Connect on Social</h3>
             <div className="flex gap-6 justify-center">
               {socialLinks.map((social, index) => (
