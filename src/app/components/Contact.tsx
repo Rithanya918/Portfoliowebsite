@@ -27,15 +27,8 @@ export function Contact() {
   };
 
   const socialLinks = [
-    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com/in/username", color: "hover:text-[#0077B5]" },
-    { icon: Github, label: "GitHub", url: "https://github.com/username", color: "hover:text-white" },
-    { icon: Twitter, label: "Twitter", url: "https://twitter.com/username", color: "hover:text-[#1DA1F2]" },
-  ];
-
-  const contactInfo = [
-    { icon: Mail, label: "Email", value: "contact@johndoe.com" },
-    { icon: Phone, label: "Phone", value: "+1 (555) 123-4567" },
-    { icon: MapPin, label: "Location", value: "San Francisco, CA" },
+    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/rithanya-sekar-/", color: "hover:text-[#0077B5]" },
+    { icon: Github, label: "GitHub", url: "https://github.com/Rithanya918", color: "hover:text-white" },
   ];
 
   return (
