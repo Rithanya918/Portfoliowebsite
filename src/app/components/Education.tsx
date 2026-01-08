@@ -1,6 +1,5 @@
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { GraduationCap, Award, BookOpen, Star } from "lucide-react";
 
 export function Education() {
   const ref = useRef(null);
@@ -8,59 +7,18 @@ export function Education() {
 
   const education = [
     {
-      degree: "Master of Science in Data Science",
-      institution: "Stanford University",
-      year: "2017-2019",
-      description: "Specialized in Machine Learning and Statistical Analysis",
-      achievements: ["GPA: 3.9/4.0", "Dean's List", "Research Assistant"],
-      icon: GraduationCap,
+      degree: "Master's in Information Systems Management",
+      institution: "University of Maryland – Robert H. Smith School of Business",
+      year: "Aug 2023 – Dec 2024",
+      gpa: "GPA: 3.7",
+      logo: "/path-to-umd-logo.png", // You'll need to add this image
     },
     {
-      degree: "Bachelor of Science in Computer Science",
-      institution: "MIT",
-      year: "2013-2017",
-      description: "Focus on Artificial Intelligence and Algorithms",
-      achievements: ["Summa Cum Laude", "Thesis on Neural Networks", "Honors Program"],
-      icon: GraduationCap,
-    },
-  ];
-
-  const certifications = [
-    {
-      title: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      year: "2023",
-      icon: Award,
-    },
-    {
-      title: "Google Cloud Professional Data Engineer",
-      issuer: "Google Cloud",
-      year: "2023",
-      icon: Award,
-    },
-    {
-      title: "TensorFlow Developer Certificate",
-      issuer: "Google",
-      year: "2022",
-      icon: Award,
-    },
-    {
-      title: "Deep Learning Specialization",
-      issuer: "deeplearning.ai",
-      year: "2021",
-      icon: BookOpen,
-    },
-    {
-      title: "Microsoft Certified: Azure AI Engineer",
-      issuer: "Microsoft",
-      year: "2022",
-      icon: Award,
-    },
-    {
-      title: "Stanford Machine Learning",
-      issuer: "Coursera",
-      year: "2020",
-      icon: BookOpen,
+      degree: "Bachelor of Technology in Information Technology",
+      institution: "JNTUH College of Engineering Hyderabad",
+      year: "2017 – 2021",
+      gpa: "GPA: 3.53",
+      logo: "/path-to-jntuh-logo.png", // You'll need to add this image
     },
   ];
 
@@ -80,137 +38,52 @@ export function Education() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl font-bold mb-6">
-            Education & <span className="text-primary">Certifications</span>
+            <span className="text-primary">Education</span>
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8" />
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Continuous learning and professional development in cutting-edge technologies
-          </p>
         </motion.div>
 
-        {/* Education */}
-        <div className="mb-20">
-          <motion.h3
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl font-semibold mb-8 flex items-center gap-3"
-          >
-            <GraduationCap className="w-8 h-8 text-primary" />
-            Academic Background
-          </motion.h3>
-
-          <div className="space-y-8">
-            {education.map((edu, index) => (
+        {/* Education Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {education.map((edu, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="group"
+            >
               <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -50 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="relative"
+                className="bg-card border-2 border-primary rounded-lg p-8 h-full hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 flex flex-col items-center text-center"
+                whileHover={{ scale: 1.02, y: -5 }}
               >
+                {/* University Logo */}
                 <motion.div
-                  className="bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-300 group"
-                  whileHover={{ scale: 1.02, x: 10 }}
+                  className="w-32 h-32 mb-6 bg-white rounded-full p-4 flex items-center justify-center"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
                 >
-                  <div className="flex items-start gap-6">
-                    <motion.div
-                      className="p-4 bg-primary/10 rounded-lg group-hover:bg-primary group-hover:scale-110 transition-all duration-300"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <edu.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
-                    </motion.div>
-
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between mb-3">
-                        <div>
-                          <h4 className="text-2xl font-semibold mb-1 group-hover:text-primary transition-colors">
-                            {edu.degree}
-                          </h4>
-                          <p className="text-lg text-muted-foreground">{edu.institution}</p>
-                        </div>
-                        <span className="px-4 py-1 bg-primary/10 text-primary rounded-full text-sm">
-                          {edu.year}
-                        </span>
-                      </div>
-
-                      <p className="text-muted-foreground mb-4">{edu.description}</p>
-
-                      <div className="flex flex-wrap gap-3">
-                        {edu.achievements.map((achievement, achIndex) => (
-                          <motion.span
-                            key={achIndex}
-                            className="flex items-center gap-2 px-3 py-1 bg-muted rounded-full text-sm"
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                            transition={{ duration: 0.3, delay: index * 0.2 + achIndex * 0.1 }}
-                          >
-                            <Star className="w-4 h-4 text-primary" />
-                            {achievement}
-                          </motion.span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Connecting line */}
-                {index < education.length - 1 && (
-                  <motion.div
-                    className="absolute left-10 top-full h-8 w-1 bg-gradient-to-b from-primary to-transparent"
-                    initial={{ scaleY: 0 }}
-                    animate={isInView ? { scaleY: 1 } : {}}
-                    transition={{ duration: 0.4, delay: index * 0.2 + 0.4 }}
+                  <img 
+                    src={edu.logo} 
+                    alt={`${edu.institution} logo`}
+                    className="w-full h-full object-contain"
                   />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Certifications */}
-        <div>
-          <motion.h3
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-3xl font-semibold mb-8 flex items-center gap-3"
-          >
-            <Award className="w-8 h-8 text-primary" />
-            Professional Certifications
-          </motion.h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                className="group"
-              >
-                <motion.div
-                  className="bg-card border border-border rounded-lg p-6 h-full hover:border-primary transition-all duration-300"
-                  whileHover={{ scale: 1.05, y: -5 }}
-                >
-                  <motion.div
-                    className="p-3 bg-primary/10 rounded-lg inline-block mb-4 group-hover:bg-primary transition-colors"
-                    whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <cert.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-                  </motion.div>
-
-                  <h4 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
-                    {cert.title}
-                  </h4>
-                  <p className="text-muted-foreground text-sm mb-2">{cert.issuer}</p>
-                  <p className="text-primary text-sm">{cert.year}</p>
                 </motion.div>
+
+                <h3 className="text-xl font-semibold mb-4 text-primary">
+                  {edu.degree}
+                </h3>
+
+                <p className="text-lg text-foreground mb-3">
+                  {edu.institution}
+                </p>
+
+                <p className="text-muted-foreground mb-2">
+                  {edu.year} · {edu.gpa}
+                </p>
               </motion.div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
