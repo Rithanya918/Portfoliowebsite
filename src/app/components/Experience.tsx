@@ -1,68 +1,9 @@
-import { motion, useInView, useMotionValue, useSpring } from "motion/react";
-import { useRef, useEffect } from "react";
-import { Briefcase, Users, Trophy, TrendingUp } from "lucide-react";
-
-function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: string }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { duration: 2000 });
-  const displayValue = useSpring(0, { duration: 2000 });
-
-  useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [isInView, value, motionValue]);
-
-  useEffect(() => {
-    springValue.on("change", (latest) => {
-      displayValue.set(Math.round(latest));
-    });
-  }, [springValue, displayValue]);
-
-  return (
-    <motion.span ref={ref}>
-      <motion.span>{displayValue}</motion.span>
-      {suffix}
-    </motion.span>
-  );
-}
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
 
 export function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-  const stats = [
-    {
-      icon: Briefcase,
-      value: 50,
-      suffix: "+",
-      label: "Projects Completed",
-      color: "from-primary to-secondary",
-    },
-    {
-      icon: Users,
-      value: 15,
-      suffix: "+",
-      label: "Teams Collaborated",
-      color: "from-secondary to-accent",
-    },
-    {
-      icon: Trophy,
-      value: 12,
-      suffix: "",
-      label: "Industry Awards",
-      color: "from-accent to-primary",
-    },
-    {
-      icon: TrendingUp,
-      value: 95,
-      suffix: "%",
-      label: "Client Satisfaction",
-      color: "from-primary to-accent",
-    },
-  ];
 
   const experiences = [
     {
@@ -127,49 +68,6 @@ export function Experience() {
           </p>
         </motion.div>
 
-        {/* Stats Counter */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className="group"
-            >
-              <motion.div
-                className="bg-card border border-border rounded-lg p-8 text-center hover:border-primary transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -10 }}
-              >
-                <motion.div
-                  className={`inline-block p-4 rounded-lg bg-gradient-to-br ${stat.color} mb-4`}
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <stat.icon className="w-8 h-8 text-white" />
-                </motion.div>
-
-                <div className="text-4xl font-bold mb-2 text-primary">
-                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                </div>
-
-                <p className="text-muted-foreground">{stat.label}</p>
-              </motion.div>
-
-              {/* Glow effect */}
-              <motion.div
-                className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 rounded-lg blur-xl transition-opacity -z-10`}
-                initial={false}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* Work Experience Timeline */}
         <div className="space-y-8">
           {experiences.map((exp, index) => (
@@ -177,7 +75,7 @@ export function Experience() {
               key={index}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.5 + index * 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
               className="relative"
             >
               <motion.div
@@ -189,7 +87,7 @@ export function Experience() {
                   className="absolute -left-3 top-8 w-6 h-6 bg-primary rounded-full border-4 border-background"
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : {}}
-                  transition={{ duration: 0.3, delay: 0.5 + index * 0.2 }}
+                  transition={{ duration: 0.3, delay: 0.2 + index * 0.2 }}
                 />
 
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
@@ -217,7 +115,7 @@ export function Experience() {
                         className="flex items-start gap-3 text-muted-foreground"
                         initial={{ opacity: 0, x: -20 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.4, delay: 0.6 + index * 0.2 + achIndex * 0.1 }}
+                        transition={{ duration: 0.4, delay: 0.3 + index * 0.2 + achIndex * 0.1 }}
                       >
                         <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
                         <span>{achievement}</span>
@@ -233,7 +131,7 @@ export function Experience() {
                   className="absolute -left-1 top-full h-8 w-1 bg-gradient-to-b from-primary/50 to-transparent"
                   initial={{ scaleY: 0 }}
                   animate={isInView ? { scaleY: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.7 + index * 0.2 }}
+                  transition={{ duration: 0.4, delay: 0.4 + index * 0.2 }}
                 />
               )}
             </motion.div>
