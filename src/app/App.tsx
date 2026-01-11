@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Navigation } from "./components/Navigation";
 import { Hero } from "./components/Hero";
 import { Certifications } from "./components/Certifications";
-import { About } from "./components/About";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
 import { Experience } from "./components/Experience";
@@ -23,7 +22,6 @@ export default function App() {
       <main>
         <Hero />
         <Certifications />
-        <About />
         <Skills />
         <Projects />
         <Experience />
