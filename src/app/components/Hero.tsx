@@ -96,7 +96,7 @@ export function Hero() {
                 transition={{ duration: 0.3 }}
               >
                 <img 
-                  src="<img width="1024" height="1536" alt="Image" src="https://github.com/user-attachments/assets/ac1aa469-06dd-4ae0-ae02-a8e00e7f37cd" />" 
+                  src="/images/profile-picture.jpg" 
                   alt="Rithanya Sekar"
                   className="w-full h-full object-cover"
                 />
@@ -113,6 +113,9 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.9 }}
             className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8"
           >
+            I turn complicated problems into elegant AI solutions and explain to humans why the AI 
+            did something completely different(LOL). Building GenAI systems, automating the boring 
+            parts, and keeping products simple (even when the tech isn't).
           </motion.p>
 
           {/* Buttons */}
