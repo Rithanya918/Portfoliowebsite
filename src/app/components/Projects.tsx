@@ -17,11 +17,11 @@ export function Projects() {
       image: "linear-gradient(135deg, #dc2626 0%, #991b1b 100%)",
     },
     {
-      title: "Real-time Analytics Dashboard",
-      description: "Developed a comprehensive analytics dashboard processing 1M+ events per day with sub-second latency.",
+      title: "Customer Booking Predictive Model",
+      description: "A machine learning solution that predicts customer flight booking completion for British Airways. The model identifies 78% of customers who will complete bookings, enabling proactive marketing strategies and improved customer acquisition.",
       category: "Analytics",
       tech: ["React", "PostgreSQL", "Kafka", "Redis"],
-      github: "https://github.com/username/analytics-dashboard",
+      github: "https://github.com/Rithanya918/British-Airways_Predictive-Modeling-of-Customer-Bookings",
       image: "linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%)",
     },
     {
