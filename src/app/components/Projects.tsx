@@ -33,11 +33,11 @@ export function Projects() {
       image: "linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%)",
     },
     {
-      title: "NLP Document Classification System",
-      description: "Implemented a state-of-the-art NLP system for document classification with 94% accuracy.",
+      title: "AI-Driven Dynamic Pricing Engine",
+      description: "An intelligent pricing optimization system powered by machine learning algorithms and real-time analytics that helps businesses maximize revenue and maintain market competitiveness through automated price recommendations, competitor monitoring, and executive insights.",
       category: "AI",
       tech: ["PyTorch", "Transformers", "FastAPI", "Docker"],
-      github: "https://github.com/username/nlp-classifier",
+      github: "https://github.com/Rithanya918/CGPricing/tree/master",
       image: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
     },
     {
