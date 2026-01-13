@@ -52,7 +52,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Profile Picture - MOVED TO TOP */}
+          {/* Profile Picture - Using GitHub image */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -66,7 +66,7 @@ export function Hero() {
                 transition={{ duration: 0.3 }}
               >
                 <img 
-                  src="/images/profile-picture.jpg" 
+                  src="https://github.com/user-attachments/assets/ac1aa469-06dd-4ae0-ae02-a8e00e7f37cd" 
                   alt="Rithanya Sekar"
                   className="w-full h-full object-cover"
                 />
@@ -145,7 +145,9 @@ export function Hero() {
               </span>
             </motion.a>
 
-            <motion.button
+            <motion.a
+              href="/resume.pdf"
+              download="Rithanya_Sekar_Resume.pdf"
               className="group px-8 py-4 border-2 border-border text-foreground rounded-lg hover:border-primary hover:text-primary transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -154,7 +156,7 @@ export function Hero() {
                 <Download className="w-5 h-5" />
                 Download Resume
               </span>
-            </motion.button>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>
