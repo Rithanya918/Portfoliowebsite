@@ -7,28 +7,15 @@ export function Experience() {
 
   const experiences = [
     {
-      title: "Lead AI Strategist",
-      company: "TechCorp Global",
-      period: "2022 - Present",
-      description: "Leading AI transformation initiatives across multiple business units, driving innovation and strategic implementation.",
-      achievements: [
-        "Architected ML platform processing 10M+ daily predictions",
-        "Reduced operational costs by $2.5M annually through automation",
-        "Led team of 12 data scientists and engineers",
-        "Increased model accuracy by 23% through novel approaches",
-      ],
-      color: "border-primary",
-    },
-    {
-      title: "Senior Data Science Consultant",
-      company: "Analytics Pro",
-      period: "2020 - 2022",
+      title: "Associate Product Manager – Analytics & AI Systems ",
+      company: "Jungroo Learning",
+      period: "2021 - 2024",
       description: "Provided strategic data science consulting to Fortune 500 companies, focusing on AI adoption and analytics transformation.",
       achievements: [
-        "Delivered 20+ successful AI implementations",
-        "Generated $5M+ in measurable client value",
-        "Built predictive models with 90%+ accuracy",
-        "Established best practices for ML deployment",
+        "Owned the analytics and experimentation roadmap, driving 15–20% raise in engagement and conversion through data-driven optimization. ",
+        "Established product vision, KPIs, and experimentation strategy, accelerating prioritization cycles by ~25% and boosting execution speed. ",
+        "Led end-to-end delivery of analytics products, translating business problems into scalable insights and dashboards, reducing decision latency by ~30%. ",
+        "Drove cross-functional execution and data governance, improving reporting accuracy by ~35% and informing executive roadmap decisions. ",
       ],
       color: "border-secondary",
     },
