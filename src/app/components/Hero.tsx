@@ -113,9 +113,6 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.9 }}
             className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8"
           >
-            I turn complicated problems into elegant AI solutions and explain to humans why the AI 
-            did something completely different(LOL). Building GenAI systems, automating the boring 
-            parts, and keeping products simple (even when the tech isn't).
           </motion.p>
 
           {/* Buttons */}
