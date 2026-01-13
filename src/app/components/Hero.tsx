@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ChevronDown, Download, ArrowRight, Mail, Linkedin } from "lucide-react";
+import { ChevronDown, Download, Mail, Linkedin } from "lucide-react";
 
 export function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -52,41 +52,11 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.p
-            className="text-primary mb-4 tracking-wider uppercase text-sm md:text-base"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            AI & ANALYTICS PROFESSIONAL | SYSTEMS THINKER | TECH STRATEGIST
-          </motion.p>
-          
-          <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            Rithanya <span className="text-primary">Sekar</span>
-          </motion.h1>
-          
-          <motion.p
-            className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            Transforming complex data into actionable insights. Building
-            intelligent systems that drive business growth and
-            innovation. <span className="text-primary">AI-powered insights</span> and
-            <span className="text-primary"> systems thinking</span>
-          </motion.p>
-
-          {/* Profile Picture */}
+          {/* Profile Picture - MOVED TO TOP */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-8"
           >
             <div className="relative inline-block">
@@ -106,16 +76,34 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Bio Text */}
           <motion.p
+            className="text-primary mb-4 tracking-wider uppercase text-sm md:text-base"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            AI & ANALYTICS PROFESSIONAL | SYSTEMS THINKER | TECH STRATEGIST
+          </motion.p>
+          
+          <motion.h1
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8"
+            transition={{ delay: 0.5, duration: 0.8 }}
           >
-            I turn complicated problems into elegant AI solutions and explain to humans why the AI 
-            did something completely different(LOL). Building GenAI systems, automating the boring 
-            parts, and keeping products simple (even when the tech isn't).
+            Rithanya <span className="text-primary">Sekar</span>
+          </motion.h1>
+          
+          <motion.p
+            className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+          >
+            Transforming complex data into actionable insights. Building
+            intelligent systems that drive business growth and
+            innovation. <span className="text-primary">AI-powered insights</span> and
+            <span className="text-primary"> systems thinking</span>
           </motion.p>
 
           {/* Buttons */}
@@ -123,7 +111,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1 }}
+            transition={{ delay: 0.9 }}
           >
             <motion.button
               onClick={() => scrollToSection("contact")}
