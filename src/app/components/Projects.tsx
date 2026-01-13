@@ -9,11 +9,11 @@ export function Projects() {
 
   const projects = [
     {
-      title: "AI-Powered Customer Insights Platform",
-      description: "Built a machine learning platform that analyzes customer behavior patterns, resulting in 35% improvement in retention rates.",
+      title: "AI-Powered Travel Agent",
+      description: "An intelligent travel booking assistant powered by GPT-3.5-turbo and LangGraph that helps users search for flights, hotels, and complete travel packages through both a form-based interface and an AI chat assistant.",
       category: "AI",
       tech: ["Python", "TensorFlow", "AWS", "Docker"],
-      github: "https://github.com/username/customer-insights",
+      github: "https://github.com/Rithanya918/Payanam",
       image: "linear-gradient(135deg, #dc2626 0%, #991b1b 100%)",
     },
     {
