@@ -9,6 +9,7 @@ export function Navigation() {
 
   const navItems = [
     { id: "hero", label: "Home" },
+    { id: "Certification", label: "Certification" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
     { id: "education", label: "Education" },
