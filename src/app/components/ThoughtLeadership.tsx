@@ -1,6 +1,6 @@
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { BookOpen, Linkedin } from "lucide-react";
+import { BookOpen, Linkedin, ExternalLink } from "lucide-react";
 
 export function ThoughtLeadership() {
   const ref = useRef(null);
@@ -13,20 +13,23 @@ export function ThoughtLeadership() {
       platform: "Medium",
       date: "Dec 2025",
       icon: BookOpen,
+      url: "https://medium.com/@rithanyasekar918/my-journey-into-the-ai-world-03a11a85125c", // ADD YOUR MEDIUM LINK HERE
     },
     {
-      title: "From Data to Decisions: A Framework",
-      description: "A comprehensive guide to building data-driven decision systems.",
+      title: "The Change in the travel industry",
+      description: "The travel industry still makes users work too hard to find the right deal.",
       platform: "LinkedIn",
       date: "Nov 2025",
       icon: Linkedin,
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7392216361726349312/", // ADD YOUR LINKEDIN ARTICLE LINK HERE
     },
     {
-      title: "Ethics in AI: Building Responsible Systems",
+      title: "My 5-step framework to approching datasets",
       description: "Discussing the importance of ethical considerations in AI development.",
-      platform: "Medium",
+      platform: "LinkedIn",
       date: "Oct 2025",
       icon: BookOpen,
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7416842775503163392/", // ADD YOUR MEDIUM LINK HERE
     },
   ];
 
@@ -62,17 +65,29 @@ export function ThoughtLeadership() {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {writings.map((writing, index) => (
-              <motion.div
+              <motion.a
                 key={index}
+                href={writing.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="group cursor-pointer"
+                className="group cursor-pointer block"
               >
                 <motion.div
-                  className="bg-card border border-border rounded-lg p-6 h-full hover:border-primary transition-all duration-300"
+                  className="bg-card border border-border rounded-lg p-6 h-full hover:border-primary transition-all duration-300 relative"
                   whileHover={{ y: -5 }}
                 >
+                  {/* External link icon - appears on hover */}
+                  <motion.div
+                    className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                    initial={{ scale: 0 }}
+                    whileHover={{ scale: 1.2 }}
+                  >
+                    <ExternalLink className="w-5 h-5 text-primary" />
+                  </motion.div>
+
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-2 bg-primary/10 rounded group-hover:bg-primary transition-colors">
                       <writing.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
@@ -87,7 +102,7 @@ export function ThoughtLeadership() {
                   </h4>
                   <p className="text-muted-foreground text-sm">{writing.description}</p>
                 </motion.div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </motion.div>
