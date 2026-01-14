@@ -164,7 +164,7 @@ export function Hero() {
       {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer"
-        onClick={() => scrollToSection("education")}
+        onClick={() => scrollToSection("certifications")}
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
