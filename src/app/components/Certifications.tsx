@@ -8,13 +8,6 @@ export function Certifications() {
 
   const certifications = [
     {
-      title: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services (AWS)",
-      date: "Issued Apr 2025 · Expires Apr 2028",
-      image: "/path-to-aws-cert.png", // Add certificate image
-      url: "https://www.credly.com/badges/your-aws-badge", // ADD YOUR AWS CREDENTIAL LINK
-    },
-    {
       title: "Microsoft Azure AI 900",
       issuer: "Microsoft Azure",
       date: "Issued Dec 2025",
@@ -25,28 +18,28 @@ export function Certifications() {
       title: "Oracle APEX Cloud Developer Professional",
       issuer: "Oracle",
       date: "Issued July 2025",
-      image: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=316F56963AC206F52BDA1FAAD8F787DE9C86A003647A34BF33E23C7FAD8CCBA3",
+      image: "https://github.com/user-attachments/assets/729aae1e-7349-40e9-9f81-e93536548fff",
       url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=316F56963AC206F52BDA1FAAD8F787DE9C86A003647A34BF33E23C7FAD8CCBA3",
     },
     {
       title: "Oracle Cloud Infrastructure 2025 Data Science Professional",
       issuer: "Oracle",
       date: "Issued Sept 2025",
-      image: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=DF0FE707B56962BE66C40D00A9D1FC49CC80A20DF11163E0CF6EFB838C6CCE02",
+      image: "https://github.com/user-attachments/assets/4b29bc60-14bb-435b-9eac-216e8532ac76",
       url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=DF0FE707B56962BE66C40D00A9D1FC49CC80A20DF11163E0CF6EFB838C6CCE02",
     },
     {
       title: "Lean Six Sigma Black Belt Certification – Level III",
       issuer: "Lean Six Sigma",
       date: "Issued Aug 2025",
-      image: "https://the.glss.app/public/certificates/91296",
+      image: "https://github.com/user-attachments/assets/d15b67a1-b283-425e-a9a8-55e91ec0e9b2",
       url: "https://the.glss.app/public/certificates/91296",
     },
     {
       title: "Microsoft Business Analyst Professional",
       issuer: "Coursera",
       date: "Issued Aug 2024",
-      image: "https://www.coursera.org/account/accomplishments/specialization/BX178V1LL5MD?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=prof",
+      image: "https://github.com/user-attachments/assets/2cacfe0f-7194-4f0f-9fa5-50c541f30bd4",
       url: "https://www.coursera.org/account/accomplishments/specialization/BX178V1LL5MD",
     },
   ];
