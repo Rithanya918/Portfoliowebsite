@@ -66,7 +66,7 @@ export function Hero() {
                 transition={{ duration: 0.3 }}
               >
                 <img 
-                  src="https://github.com/user-attachments/assets/0568c1d6-6f97-40a7-a7a4-be0de96aac4b" 
+                  src="https://github.com/user-attachments/assets/6912bfdd-950f-47bc-8a90-d367c8e9e2e8" 
                   alt="Rithanya Sekar"
                   className="w-full h-full object-cover"
                 />
