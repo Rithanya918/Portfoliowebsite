@@ -8,8 +8,8 @@ export function ThoughtLeadership() {
 
   const writings = [
     {
-      title: "The Future of AI in Business Strategy",
-      description: "Exploring how AI is reshaping strategic decision-making in modern enterprises.",
+      title: "My Journey into the AI World",
+      description: "How Curiosity Became My Compass.",
       platform: "Medium",
       date: "Dec 2025",
       icon: BookOpen,
