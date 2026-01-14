@@ -9,7 +9,7 @@ export function Contact() {
   const socialLinks = [
     { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/rithanya-sekar-/", color: "hover:text-[#0077B5]" },
     { icon: Github, label: "GitHub", url: "https://github.com/Rithanya918", color: "hover:text-white" },
-    { icon: Mail, label: "Email", url: "mailto:your.email@example.com", color: "hover:text-primary" },
+    { icon: Mail, label: "Email", url: "mailto:rseka002@fiu.edu", color: "hover:text-primary" },
   ];
 
   return (
