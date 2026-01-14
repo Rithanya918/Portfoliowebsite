@@ -18,7 +18,7 @@ export function Certifications() {
       title: "Microsoft Azure AI 900",
       issuer: "Microsoft Azure",
       date: "Issued Dec 2025",
-      image: "https://drive.google.com/file/d/1NZQeRSExP8rI3BvMzkLNSdqyYCUN094Z/view?pli=1",
+      image: "https://github.com/user-attachments/assets/713f8be7-db93-44d1-948c-596494e95328",
       url: "https://learn.microsoft.com/en-us/users/your-profile/credentials", // ADD YOUR MICROSOFT CREDENTIAL LINK
     },
     {
