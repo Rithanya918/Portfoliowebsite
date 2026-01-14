@@ -14,6 +14,7 @@ export function Projects() {
       category: "AI",
       tech: ["Python", "TensorFlow", "AWS", "Docker"],
       github: "https://github.com/Rithanya918/Payanam",
+      demo: "", // Add live demo link if available
       image: "linear-gradient(135deg, #dc2626 0%, #991b1b 100%)",
     },
     {
@@ -22,6 +23,7 @@ export function Projects() {
       category: "Analytics",
       tech: ["React", "PostgreSQL", "Kafka", "Redis"],
       github: "https://github.com/Rithanya918/British-Airways_Predictive-Modeling-of-Customer-Bookings",
+      demo: "",
       image: "linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%)",
     },
     {
@@ -30,6 +32,7 @@ export function Projects() {
       category: "Automation",
       tech: ["Python", "Airflow", "Kubernetes", "MLflow"],
       github: "https://github.com/username/ml-pipeline",
+      demo: "",
       image: "linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%)",
     },
     {
@@ -38,6 +41,7 @@ export function Projects() {
       category: "AI",
       tech: ["PyTorch", "Transformers", "FastAPI", "Docker"],
       github: "https://github.com/Rithanya918/CGPricing/tree/master",
+      demo: "",
       image: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
     },
     {
@@ -46,6 +50,7 @@ export function Projects() {
       category: "Analytics",
       tech: ["Python", "Scikit-learn", "Azure", "SQL"],
       github: "https://github.com/username/predictive-maintenance",
+      demo: "",
       image: "linear-gradient(135deg, #991b1b 0%, #dc2626 100%)",
     },
     {
@@ -54,6 +59,7 @@ export function Projects() {
       category: "Infrastructure",
       tech: ["Snowflake", "dbt", "Python", "Terraform"],
       github: "https://github.com/username/data-warehouse",
+      demo: "",
       image: "linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%)",
     },
   ];
@@ -151,9 +157,16 @@ export function Projects() {
                       >
                         <Github className="w-6 h-6 text-white" />
                       </a>
-                      <button className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors">
-                        <ExternalLink className="w-6 h-6 text-white" />
-                      </button>
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                        >
+                          <ExternalLink className="w-6 h-6 text-white" />
+                        </a>
+                      )}
                     </motion.div>
                   </motion.div>
                 </div>
@@ -203,7 +216,7 @@ export function Projects() {
           className="text-center mt-12"
         >
           <motion.a
-            href="https://github.com/username"
+            href="https://github.com/Rithanya918"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 bg-card border border-border rounded-lg hover:border-primary transition-colors group"
