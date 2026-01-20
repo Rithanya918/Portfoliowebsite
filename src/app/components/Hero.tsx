@@ -146,7 +146,7 @@ export function Hero() {
             </motion.a>
 
             <motion.a
-              href="/resume.pdf"
+              href="/Rithanya_Sekar_Resume.pdf"
               download="Rithanya_Sekar_Resume.pdf"
               className="group px-8 py-4 border-2 border-border text-foreground rounded-lg hover:border-primary hover:text-primary transition-colors"
               whileHover={{ scale: 1.05 }}
