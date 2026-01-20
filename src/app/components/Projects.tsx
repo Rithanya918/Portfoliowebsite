@@ -114,15 +114,8 @@ export function Projects() {
                   className="h-48 relative overflow-hidden"
                   style={{ background: project.image }}
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                    initial={false}
-                  >
-                    <motion.div
-                      className="flex gap-4"
-                      initial={{ y: 20, opacity: 0 }}
-                      whileHover={{ y: 0, opacity: 1 }}
-                    >
+                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center transition-all group-hover:bg-black/50">
+                    <div className="flex gap-4">
                       <a
                         href={project.github}
                         target="_blank"
@@ -141,8 +134,8 @@ export function Projects() {
                           <ExternalLink className="w-6 h-6 text-white" />
                         </a>
                       )}
-                    </motion.div>
-                  </motion.div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Project content */}
