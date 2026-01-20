@@ -95,12 +95,12 @@ export function Hero() {
           </motion.h1>
           
           <motion.p
-            className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
+            className="text-base md:text-lg lg:text-xl text-muted-foreground mb-12 max-w-5xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
-  Results-driven Business Analyst and Product Owner with expertise in analytics, AI systems, and digital transformation. 
+            Results-driven Business Analyst and Product Owner with expertise in analytics, AI systems, and digital transformation. 
             Skilled in translating complex data into actionable insights, optimizing workflows, and driving measurable business impact 
             through data-driven decision-making and stakeholder collaboration. <span className="text-primary">AI-powered insights</span> and
             <span className="text-primary"> systems thinking</span>
