@@ -11,7 +11,7 @@ export function Hero() {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
       {/* Animated background gradient */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10"
+        className="absolute inset-0 bg-gradient-to-br from-red-950/80 via-red-900/60 to-black"
         animate={{
           backgroundPosition: ["0% 0%", "100% 100%"],
         }}
@@ -27,7 +27,7 @@ export function Hero() {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-primary/20 rounded-full"
+            className="absolute w-2 h-2 bg-red-500/40 rounded-full"
             initial={{
               x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
