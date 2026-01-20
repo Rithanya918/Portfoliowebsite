@@ -1,5 +1,7 @@
 import { motion } from "motion/react";
 import { ChevronDown, Download, Mail, Linkedin } from "lucide-react";
+// Import resume from src/public folder
+import resumePDF from "../public/Rithanya_Sekar_Resume.pdf";
 
 export function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -146,7 +148,7 @@ export function Hero() {
             </motion.a>
 
             <motion.a
-              href="/Rithanya_Sekar_Resume.pdf"
+              href={resumePDF}
               download="Rithanya_Sekar_Resume.pdf"
               className="group px-8 py-4 border-2 border-border text-foreground rounded-lg hover:border-primary hover:text-primary transition-colors"
               whileHover={{ scale: 1.05 }}
