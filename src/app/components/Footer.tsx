@@ -62,7 +62,7 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex items-center gap-2 text-sm text-muted-foreground"
           >
-            <span>© 2026 John Anderson. Made with</span>
+            <span>© 2026 Rithanya Sekar. Made with</span>
             <motion.div
               animate={{
                 scale: [1, 1.2, 1],
@@ -75,7 +75,7 @@ export function Footer() {
             >
               <Heart className="w-4 h-4 text-primary fill-primary" />
             </motion.div>
-            <span>and AI</span>
+            <span>and Passion to create</span>
           </motion.div>
         </div>
       </div>
