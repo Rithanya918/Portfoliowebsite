@@ -26,15 +26,7 @@ export function Projects() {
       demo: "",
       image: "linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%)",
     },
-    {
-      title: "Automated ML Pipeline",
-      description: "Created an end-to-end MLOps pipeline reducing model deployment time from weeks to hours.",
-      category: "Automation",
-      tech: ["Python", "Airflow", "Kubernetes", "MLflow"],
-      github: "https://github.com/username/ml-pipeline",
-      demo: "",
-      image: "linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%)",
-    },
+
     {
       title: "AI-Driven Dynamic Pricing Engine",
       description: "An intelligent pricing optimization system powered by machine learning algorithms and real-time analytics that helps businesses maximize revenue and maintain market competitiveness through automated price recommendations, competitor monitoring, and executive insights.",
@@ -52,15 +44,6 @@ export function Projects() {
       github: "https://github.com/username/predictive-maintenance",
       demo: "",
       image: "linear-gradient(135deg, #991b1b 0%, #dc2626 100%)",
-    },
-    {
-      title: "Data Warehouse Modernization",
-      description: "Led the migration of legacy data warehouse to cloud, improving query performance by 10x.",
-      category: "Infrastructure",
-      tech: ["Snowflake", "dbt", "Python", "Terraform"],
-      github: "https://github.com/username/data-warehouse",
-      demo: "",
-      image: "linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%)",
     },
   ];
 
