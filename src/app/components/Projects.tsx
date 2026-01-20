@@ -36,15 +36,6 @@ export function Projects() {
       demo: "",
       image: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
     },
-    {
-      title: "Predictive Maintenance Model",
-      description: "Developed predictive models for industrial equipment, reducing downtime by 40%.",
-      category: "Analytics",
-      tech: ["Python", "Scikit-learn", "Azure", "SQL"],
-      github: "https://github.com/username/predictive-maintenance",
-      demo: "",
-      image: "linear-gradient(135deg, #991b1b 0%, #dc2626 100%)",
-    },
   ];
 
   const categories = ["All", "AI", "Analytics", "Automation", "Infrastructure"];
