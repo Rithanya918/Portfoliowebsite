@@ -95,7 +95,7 @@ export function Hero() {
           </motion.h1>
           
           <motion.p
-            className="text-base md:text-base lg:text-base text-muted-foreground mb-12 max-w-7xl mx-auto leading-relaxed"
+            className="text-lg md:text-lg lg:text-lg text-muted-foreground mb-12 max-w-7xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
