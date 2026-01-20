@@ -100,9 +100,9 @@ export function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
-            Transforming complex data into actionable insights. Building
-            intelligent systems that drive business growth and
-            innovation. <span className="text-primary">AI-powered insights</span> and
+  Results-driven Business Analyst and Product Owner with expertise in analytics, AI systems, and digital transformation. 
+            Skilled in translating complex data into actionable insights, optimizing workflows, and driving measurable business impact 
+            through data-driven decision-making and stakeholder collaboration. <span className="text-primary">AI-powered insights</span> and
             <span className="text-primary"> systems thinking</span>
           </motion.p>
 
