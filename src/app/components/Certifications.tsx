@@ -7,6 +7,13 @@ export function Certifications() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const certifications = [
+        {
+      title: "AWS Certified AI Practitioner",
+      issuer: "AWS",
+      date: "Issued Jan 2026",
+      image: "https://github.com/user-attachments/assets/713f8be7-db93-44d1-948c-596494e95328",
+      url: "https://www.credly.com/earner/earned/badge/1c86c430-b1fa-4e09-b636-047d4e0cf9df", // ADD YOUR MICROSOFT CREDENTIAL LINK
+    },
     {
       title: "Microsoft Azure AI 900",
       issuer: "Microsoft Azure",
