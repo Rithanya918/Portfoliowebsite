@@ -11,7 +11,7 @@ export function Certifications() {
       title: "Professional Scrum Product Owner (PSPO)",
       issuer: "Scrum.org",
       date: "Issued Feb 2026",
-      image: "https://github.com/user-attachments/assets/406f825c-9286-4130-aec4-ddb4fee11535",
+      image: "https://github.com/user-attachments/assets/7b69b801-c76e-4f7a-b5cd-3e7e16ad9619",
       url: "https://www.credly.com/earner/earned/badge/30afc284-552b-444c-a527-a902812041fd", // ADD YOUR MICROSOFT CREDENTIAL LINK
     },
         {
