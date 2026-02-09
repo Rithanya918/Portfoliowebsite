@@ -7,6 +7,13 @@ export function Certifications() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const certifications = [
+            {
+      title: "Professional Scrum Product Owner (PSPO)",
+      issuer: "Scrum.org",
+      date: "Issued Feb 2026",
+      image: "https://github.com/user-attachments/assets/406f825c-9286-4130-aec4-ddb4fee11535",
+      url: "https://www.credly.com/earner/earned/badge/30afc284-552b-444c-a527-a902812041fd", // ADD YOUR MICROSOFT CREDENTIAL LINK
+    },
         {
       title: "AWS Certified AI Practitioner",
       issuer: "AWS",
