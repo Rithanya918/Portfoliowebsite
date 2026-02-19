@@ -36,6 +36,16 @@ export function Projects() {
       demo: "",
       image: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
     },
+
+    {
+      title: "Pizza Sales Report",
+      description: "Analysis and displays sales trends, top and least performers of a Pizza store, helping to make business descisions",
+      category: "Analytics",
+      tech: ["MySQL- Workbench", "Tableau", "Snowflake", "SQL queires"],
+      github: "https://github.com/Rithanya918/Sales_analysis_Dashboard_1/tree/main",
+      demo: "",
+      image: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
+    },
   ];
 
   const categories = ["All", "AI", "Analytics", "Automation", "Infrastructure"];
