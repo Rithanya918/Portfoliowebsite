@@ -46,6 +46,15 @@ export function Projects() {
       demo: "",
       image: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
     },
+   {
+      title: "Customer-Shopping-Behavior-Analysis",
+      description: "Analyzing retail transactions to uncover spending patterns, customer segments, and product preferences using Python, SQL, and Power BI.",
+      category: "Analytics",
+      tech: ["PostgreSQL", "PowerBI", "SQL queires", "Python"],
+      github: "hhttps://github.com/Rithanya918/Customer-Shopping-Analysis/tree/main",
+      demo: "",
+      image: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
+    },
   ];
 
   const categories = ["All", "AI", "Analytics", "Automation", "Infrastructure"];
