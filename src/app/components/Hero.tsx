@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ChevronDown, Download, Mail, Linkedin } from "lucide-react";
+import { ChevronDown, Mail, Linkedin } from "lucide-react";
 
 export function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -142,19 +142,6 @@ export function Hero() {
               <span className="flex items-center gap-2">
                 <Linkedin className="w-5 h-5" />
                 View LinkedIn
-              </span>
-            </motion.a>
-
-            <motion.a
-              href="/Rithanya_Sekar_Resume.pdf"
-              download="Rithanya_Sekar_Resume.pdf"
-              className="group px-8 py-4 border-2 border-border text-foreground rounded-lg hover:border-primary hover:text-primary transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="flex items-center gap-2">
-                <Download className="w-5 h-5" />
-                Download Resume
               </span>
             </motion.a>
           </motion.div>
