@@ -9,6 +9,15 @@ export function Projects() {
 
   const projects = [
     {
+      title: "AROS - AI Reliability Overlay System",
+      description: "An AI reliability overlay that detects and prevents AI hallucinations through real-time verification of responses across platforms like ChatGPT, Claude, and Gemini. Provides confidence scoring (0-100) with detailed breakdowns and color-coded risk insights.",
+      category: "AI",
+      tech: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+      github: "https://github.com/Rithanya918/AROS",
+      demo: "https://aros-1.lovable.app/",
+      image: "linear-gradient(135deg, #dc2626 0%, #991b1b 100%)",
+    },
+    {
       title: "AI-Powered Travel Agent",
       description: "An intelligent travel booking assistant powered by GPT-3.5-turbo and LangGraph that helps users search for flights, hotels, and complete travel packages through both a form-based interface and an AI chat assistant.",
       category: "AI",
@@ -54,15 +63,6 @@ export function Projects() {
       github: "hhttps://github.com/Rithanya918/Customer-Shopping-Analysis/tree/main",
       demo: "",
       image: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
-    },
-    {
-      title: "AROS - AI Reliability Overlay System",
-      description: "An AI reliability overlay that detects and prevents AI hallucinations through real-time verification of responses across platforms like ChatGPT, Claude, and Gemini. Provides confidence scoring (0-100) with detailed breakdowns and color-coded risk insights.",
-      category: "AI",
-      tech: ["React", "TypeScript", "Vite", "Tailwind CSS"],
-      github: "https://github.com/Rithanya918/AROS",
-      demo: "https://aros-1.lovable.app/",
-      image: "linear-gradient(135deg, #dc2626 0%, #991b1b 100%)",
     },
   ];
 
