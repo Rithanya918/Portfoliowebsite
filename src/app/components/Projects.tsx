@@ -79,16 +79,17 @@ export function Projects() {
 
   const categories = ["All", "AI", "Analytics"];
 
-  // Scattered "card wall" layout — irregular position, depth and tilt per tile
+  // Scattered "card wall" layout — mirrors the reference composition:
+  // position, depth, tilt and per-tile scale (front/bottom larger, back/top smaller)
   const scatter = [
-    { left: "6%", top: "26%", rotate: -5, z: 10 },
-    { left: "19%", top: "6%", rotate: 3, z: 70 },
-    { left: "37%", top: "12%", rotate: -2, z: 40 },
-    { left: "27%", top: "48%", rotate: 2, z: 140 },
-    { left: "61%", top: "20%", rotate: -4, z: 50 },
-    { left: "79%", top: "32%", rotate: 4, z: 0 },
-    { left: "52%", top: "56%", rotate: -2, z: 100 },
-    { left: "76%", top: "58%", rotate: 3, z: 60 },
+    { left: "7%", top: "24%", rotate: -4, z: 20, scale: 0.95 },   // left, medium
+    { left: "18%", top: "5%", rotate: 2, z: 0, scale: 0.8 },      // upper, small
+    { left: "35%", top: "9%", rotate: -1, z: 10, scale: 0.82 },   // top center, small
+    { left: "25%", top: "46%", rotate: 1, z: 160, scale: 1.12 },  // front, largest
+    { left: "60%", top: "22%", rotate: -2, z: 0, scale: 0.82 },   // right upper, small
+    { left: "80%", top: "30%", rotate: 3, z: -10, scale: 0.85 },  // far right, small
+    { left: "51%", top: "52%", rotate: -1, z: 90, scale: 1.05 },  // lower center, large
+    { left: "76%", top: "50%", rotate: 2, z: 70, scale: 1.0 },    // lower right, large
   ];
 
   const filteredProjects = activeFilter === "All"
@@ -160,10 +161,10 @@ export function Projects() {
               return (
                 <motion.div
                   key={project.title}
-                  initial={{ opacity: 0, scale: 0.85 }}
-                  animate={{ opacity: 1, scale: 1, z: pos.z }}
-                  exit={{ opacity: 0, scale: 0.85 }}
-                  whileHover={{ z: pos.z + 180, scale: 1.06 }}
+                  initial={{ opacity: 0, scale: pos.scale * 0.85 }}
+                  animate={{ opacity: 1, scale: pos.scale, z: pos.z }}
+                  exit={{ opacity: 0, scale: pos.scale * 0.85 }}
+                  whileHover={{ z: pos.z + 180, scale: pos.scale * 1.08 }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                   onClick={() => setSelectedProject(project)}
                   style={{
