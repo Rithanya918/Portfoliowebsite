@@ -1,11 +1,12 @@
-import { motion, useInView } from "motion/react";
+import { motion, useInView, AnimatePresence } from "motion/react";
 import { useRef, useState } from "react";
-import { Github, ExternalLink, Filter } from "lucide-react";
+import { Github, ExternalLink, Filter, X } from "lucide-react";
 
 export function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<any>(null);
 
   const projects = [
     {
@@ -157,7 +158,8 @@ export function Projects() {
                   className="group relative [transform-style:preserve-3d]"
                 >
               <motion.div
-                className="bg-card border border-border rounded-lg overflow-hidden h-full hover:border-primary transition-all duration-300"
+                onClick={() => setSelectedProject(project)}
+                className="bg-card border border-border rounded-lg overflow-hidden h-full hover:border-primary transition-all duration-300 cursor-pointer"
                 whileHover={{ y: -10 }}
               >
                 {/* Project image/gradient */}
@@ -179,6 +181,7 @@ export function Projects() {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                           className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
                         >
                           <Github className="w-6 h-6 text-white" />
@@ -189,6 +192,7 @@ export function Projects() {
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                           className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
                         >
                           <ExternalLink className="w-6 h-6 text-white" />
@@ -257,6 +261,107 @@ export function Projects() {
           </motion.a>
         </motion.div>
       </div>
+
+      {/* Project detail popup */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+
+            {/* Card */}
+            <motion.div
+              className="relative z-10 w-full max-w-2xl bg-card border border-border rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto"
+              initial={{ scale: 0.85, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.85, opacity: 0, y: 30 }}
+              transition={{ type: "spring", stiffness: 260, damping: 24 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-20 p-2 bg-black/40 backdrop-blur-sm rounded-full text-white hover:bg-primary transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Image / gradient header */}
+              <div
+                className="h-56 md:h-64 relative overflow-hidden"
+                style={{ background: selectedProject.image }}
+              >
+                {selectedProject.imageUrl && (
+                  <img
+                    src={selectedProject.imageUrl}
+                    alt={selectedProject.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+              </div>
+
+              {/* Content */}
+              <div className="p-6 md:p-8">
+                <span className="px-3 py-1 text-xs bg-primary/10 text-primary rounded-full">
+                  {selectedProject.category}
+                </span>
+                <h3 className="text-2xl md:text-3xl font-bold mt-4 mb-4">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  {selectedProject.description}
+                </p>
+
+                {/* Tech stack */}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {selectedProject.tech.map((tech: string, techIndex: number) => (
+                    <span
+                      key={techIndex}
+                      className="px-3 py-1 text-xs bg-muted text-muted-foreground rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Links */}
+                <div className="flex flex-wrap gap-4">
+                  {selectedProject.github && (
+                    <a
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition-colors"
+                    >
+                      <Github className="w-5 h-5" />
+                      View Code
+                    </a>
+                  )}
+                  {selectedProject.demo && (
+                    <a
+                      href={selectedProject.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+                    >
+                      <ExternalLink className="w-5 h-5" />
+                      Live Demo
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
