@@ -50,26 +50,26 @@ export function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-background/95 backdrop-blur-md border-b border-border shadow-lg"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
+        <div
+          className={`max-w-5xl mx-auto rounded-2xl border border-white/10 backdrop-blur-xl shadow-lg shadow-black/20 transition-all duration-300 ${
+            isScrolled ? "bg-background/70" : "bg-background/30"
+          }`}
+        >
+          <div className="grid grid-cols-[auto_1fr_auto] items-center px-6 py-3">
             {/* Logo */}
             <motion.button
               onClick={() => scrollToSection("hero")}
-              className="text-2xl font-bold bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent"
+              className="text-2xl font-bold bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent justify-self-start"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               RS
             </motion.button>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
+            {/* Desktop Navigation (centered) */}
+            <div className="hidden md:flex items-center justify-center gap-1">
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.id}
@@ -93,7 +93,7 @@ export function Navigation() {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
+              className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors col-start-3 justify-self-end"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
