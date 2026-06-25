@@ -64,6 +64,15 @@ export function Projects() {
       demo: "",
       image: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
     },
+    {
+      title: "NYC Restaurant Inspection Dashboard",
+      description: "An interactive Tableau dashboard analyzing NYC restaurant inspection data to surface trends in health grades, violations, cuisine types, and borough-level patterns, helping identify food safety insights across the city.",
+      category: "Analytics",
+      tech: ["Tableau", "Data Visualization", "Public Health Data"],
+      github: "",
+      demo: "https://public.tableau.com/views/NYCRESTAURANTINSPECTION/NYCRestaurantInspectionDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+      image: "linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%)",
+    },
   ];
 
   const categories = ["All", "AI", "Analytics", "Automation", "Infrastructure"];
@@ -144,14 +153,16 @@ export function Projects() {
                 >
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center transition-all group-hover:bg-black/50">
                     <div className="flex gap-4">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
-                      >
-                        <Github className="w-6 h-6 text-white" />
-                      </a>
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                        >
+                          <Github className="w-6 h-6 text-white" />
+                        </a>
+                      )}
                       {project.demo && (
                         <a
                           href={project.demo}
