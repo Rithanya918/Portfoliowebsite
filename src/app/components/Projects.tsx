@@ -143,13 +143,17 @@ export function Projects() {
 
         {/* Projects — scattered 3D rotating card wall */}
         <div
-          className="[perspective:1800px]"
-          style={{ perspectiveOrigin: "50% 40%" }}
+          className="[perspective:1400px]"
+          style={{ perspectiveOrigin: "50% 45%" }}
         >
           <motion.div
             className="relative h-[460px] sm:h-[520px] md:h-[600px] [transform-style:preserve-3d]"
-            animate={{ rotateY: [-18, 18, -18], rotateX: [9, 5, 9] }}
-            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+            animate={{
+              rotateY: [-36, 36, -36],
+              rotateX: [6, 20, 6],
+              rotateZ: [-3, 3, -3],
+            }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
           >
             {filteredProjects.map((project, index) => {
               const pos = scatter[index % scatter.length];
