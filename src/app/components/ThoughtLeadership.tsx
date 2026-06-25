@@ -63,7 +63,7 @@ export function ThoughtLeadership() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {writings.map((writing, index) => (
               <motion.a
                 key={index}
@@ -76,7 +76,11 @@ export function ThoughtLeadership() {
                 className="group cursor-pointer block"
               >
                 <motion.div
-                  className="bg-card border border-border rounded-lg p-6 h-full hover:border-primary transition-all duration-300 relative"
+                  className="border border-red-900/40 rounded-lg p-8 min-h-[15rem] h-full hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 relative"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, #dc2626 0%, #7f1d1d 20%, #1a0d0d 45%, #0b0b0d 100%)",
+                  }}
                   whileHover={{ y: -5 }}
                 >
                   {/* External link icon - appears on hover */}
@@ -85,22 +89,22 @@ export function ThoughtLeadership() {
                     initial={{ scale: 0 }}
                     whileHover={{ scale: 1.2 }}
                   >
-                    <ExternalLink className="w-5 h-5 text-primary" />
+                    <ExternalLink className="w-5 h-5 text-white" />
                   </motion.div>
 
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-primary/10 rounded group-hover:bg-primary transition-colors">
-                      <writing.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="p-2 bg-black/30 rounded group-hover:bg-white/20 transition-colors">
+                      <writing.icon className="w-5 h-5 text-white transition-colors" />
                     </div>
                     <div className="flex-1">
-                      <span className="text-sm text-primary">{writing.platform}</span>
-                      <span className="text-sm text-muted-foreground ml-2">{writing.date}</span>
+                      <span className="text-sm text-white">{writing.platform}</span>
+                      <span className="text-sm text-white/70 ml-2">{writing.date}</span>
                     </div>
                   </div>
-                  <h4 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                  <h4 className="text-xl font-semibold mb-3 text-white transition-colors">
                     {writing.title}
                   </h4>
-                  <p className="text-muted-foreground text-sm">{writing.description}</p>
+                  <p className="text-muted-foreground text-base">{writing.description}</p>
                 </motion.div>
               </motion.a>
             ))}
