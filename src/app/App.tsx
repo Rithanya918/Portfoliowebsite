@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Navigation } from "./components/Navigation";
+import { ParticlesField } from "./components/ParticlesField";
 import { Hero } from "./components/Hero";
 import { Certifications } from "./components/Certifications";
 import { Skills } from "./components/Skills";
@@ -17,8 +18,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground dark">
+      <ParticlesField />
       <Navigation />
-      
+
       <main>
         <Hero />
         <Projects />
