@@ -72,7 +72,7 @@ export function Projects() {
       github: "",
       demo: "https://public.tableau.com/views/NYCRESTAURANTINSPECTION/NYCRestaurantInspectionDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
       image: "linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%)",
-      imageUrl: "/nyc-restaurant-dashboard.png",
+      imageUrl: "https://github.com/user-attachments/assets/4b26d159-3bcf-44a1-be05-427c8e30f78f",
     },
   ];
 
