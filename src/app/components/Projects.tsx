@@ -55,6 +55,15 @@ export function Projects() {
       demo: "",
       image: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
     },
+    {
+      title: "AROS - AI Reliability Overlay System",
+      description: "An AI reliability overlay that detects and prevents AI hallucinations through real-time verification of responses across platforms like ChatGPT, Claude, and Gemini. Provides confidence scoring (0-100) with detailed breakdowns and color-coded risk insights.",
+      category: "AI",
+      tech: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+      github: "https://github.com/Rithanya918/AROS",
+      demo: "https://aros-1.lovable.app/",
+      image: "linear-gradient(135deg, #dc2626 0%, #991b1b 100%)",
+    },
   ];
 
   const categories = ["All", "AI", "Analytics", "Automation", "Infrastructure"];
