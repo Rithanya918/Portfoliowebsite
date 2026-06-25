@@ -79,8 +79,17 @@ export function Projects() {
 
   const categories = ["All", "AI", "Analytics"];
 
-  // Per-card depth (translateZ) for the floating 3D look
-  const cardDepths = [0, 80, -60, 50, -40, 90];
+  // Scattered "card wall" layout — irregular position, depth and tilt per tile
+  const scatter = [
+    { left: "6%", top: "26%", rotate: -5, z: 10 },
+    { left: "19%", top: "6%", rotate: 3, z: 70 },
+    { left: "37%", top: "12%", rotate: -2, z: 40 },
+    { left: "27%", top: "48%", rotate: 2, z: 140 },
+    { left: "61%", top: "20%", rotate: -4, z: 50 },
+    { left: "79%", top: "32%", rotate: 4, z: 0 },
+    { left: "52%", top: "56%", rotate: -2, z: 100 },
+    { left: "76%", top: "58%", rotate: 3, z: 60 },
+  ];
 
   const filteredProjects = activeFilter === "All"
     ? projects
@@ -132,112 +141,64 @@ export function Projects() {
           ))}
         </motion.div>
 
-        {/* Projects grid — 3D rotating stage */}
+        {/* Projects — scattered 3D rotating card wall */}
         <div
           className="[perspective:1800px]"
           style={{ perspectiveOrigin: "50% 40%" }}
         >
           <motion.div
-            className="[transform-style:preserve-3d]"
-            animate={{ rotateY: [-22, 22, -22], rotateX: [10, 5, 10] }}
+            className="relative h-[460px] sm:h-[520px] md:h-[600px] [transform-style:preserve-3d]"
+            animate={{ rotateY: [-18, 18, -18], rotateX: [9, 5, 9] }}
             transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
           >
-            <motion.div
-              layout
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [transform-style:preserve-3d]"
-            >
-              {filteredProjects.map((project, index) => (
+            {filteredProjects.map((project, index) => {
+              const pos = scatter[index % scatter.length];
+              return (
                 <motion.div
                   key={project.title}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1, z: cardDepths[index % cardDepths.length] }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  whileHover={{ z: 160 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative [transform-style:preserve-3d]"
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, scale: 1, z: pos.z }}
+                  exit={{ opacity: 0, scale: 0.85 }}
+                  whileHover={{ z: pos.z + 180, scale: 1.06 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  onClick={() => setSelectedProject(project)}
+                  style={{
+                    left: pos.left,
+                    top: pos.top,
+                    rotate: pos.rotate,
+                    transformStyle: "preserve-3d",
+                  }}
+                  className="group absolute w-32 h-36 sm:w-36 sm:h-44 md:w-44 md:h-52 cursor-pointer"
                 >
-              <motion.div
-                onClick={() => setSelectedProject(project)}
-                className="bg-card border border-border rounded-lg overflow-hidden h-full hover:border-primary transition-all duration-300 cursor-pointer"
-                whileHover={{ y: -10 }}
-              >
-                {/* Project image/gradient */}
-                <div
-                  className="h-48 relative overflow-hidden"
-                  style={{ background: project.image }}
-                >
-                  {project.imageUrl && (
-                    <img
-                      src={project.imageUrl}
-                      alt={project.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center transition-all group-hover:bg-black/50">
-                    <div className="flex gap-4">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
-                        >
-                          <Github className="w-6 h-6 text-white" />
-                        </a>
-                      )}
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
-                        >
-                          <ExternalLink className="w-6 h-6 text-white" />
-                        </a>
-                      )}
+                  {/* Tile */}
+                  <div
+                    className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 group-hover:ring-primary/60 transition-all duration-300"
+                    style={{ background: project.image }}
+                  >
+                    {project.imageUrl && (
+                      <img
+                        src={project.imageUrl}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    )}
+                    {/* Title scrim */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-3">
+                      <span className="text-[10px] uppercase tracking-wider text-primary">
+                        {project.category}
+                      </span>
+                      <h3 className="text-white text-xs sm:text-sm font-semibold leading-tight line-clamp-2">
+                        {project.title}
+                      </h3>
                     </div>
                   </div>
-                </div>
 
-                {/* Project content */}
-                <div className="p-6">
-                  <div className="mb-3">
-                    <span className="px-3 py-1 text-xs bg-primary/10 text-primary rounded-full">
-                      {project.category}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  {/* Tech stack */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-2 py-1 text-xs bg-muted text-muted-foreground rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Hover glow effect */}
-              <motion.div
-                className="absolute inset-0 bg-primary/10 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity -z-10"
-                initial={false}
-              />
+                  {/* Hover glow */}
+                  <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
                 </motion.div>
-              ))}
-            </motion.div>
+              );
+            })}
           </motion.div>
         </div>
 
