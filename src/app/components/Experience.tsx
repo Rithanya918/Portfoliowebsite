@@ -56,7 +56,7 @@ export function Experience() {
         </motion.div>
 
         {/* Work Experience Timeline */}
-        <div className="space-y-8">
+        <div className="space-y-6 max-w-4xl mx-auto">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
@@ -66,7 +66,11 @@ export function Experience() {
               className="relative"
             >
               <motion.div
-                className={`bg-card border-2 ${exp.color} rounded-lg p-8 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 group`}
+                className="border border-red-900/40 rounded-lg p-6 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 group"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, #dc2626 0%, #7f1d1d 20%, #1a0d0d 45%, #0b0b0d 100%)",
+                }}
                 whileHover={{ scale: 1.02 }}
               >
                 {/* Timeline dot */}
@@ -79,17 +83,17 @@ export function Experience() {
 
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                   <div>
-                    <h3 className="text-2xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-semibold mb-2 text-white transition-colors">
                       {exp.title}
                     </h3>
-                    <p className="text-lg text-muted-foreground mb-2">{exp.company}</p>
+                    <p className="text-base text-white/80 mb-2">{exp.company}</p>
                   </div>
-                  <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm whitespace-nowrap h-fit">
+                  <span className="px-4 py-2 bg-black/30 text-white rounded-full text-sm whitespace-nowrap h-fit">
                     {exp.period}
                   </span>
                 </div>
 
-                <p className="text-muted-foreground mb-6">{exp.description}</p>
+                <p className="text-muted-foreground mb-5">{exp.description}</p>
 
                 <div className="space-y-3">
                   <h4 className="font-semibold text-sm uppercase tracking-wide text-primary">
