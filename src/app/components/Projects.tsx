@@ -78,6 +78,9 @@ export function Projects() {
 
   const categories = ["All", "AI", "Analytics"];
 
+  // Per-card depth (translateZ) for the floating 3D look
+  const cardDepths = [0, 80, -60, 50, -40, 90];
+
   const filteredProjects = activeFilter === "All"
     ? projects
     : projects.filter(project => project.category === activeFilter);
@@ -128,21 +131,31 @@ export function Projects() {
           ))}
         </motion.div>
 
-        {/* Projects grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        {/* Projects grid — 3D rotating stage */}
+        <div
+          className="[perspective:1800px]"
+          style={{ perspectiveOrigin: "50% 40%" }}
         >
-          {filteredProjects.map((project, index) => (
+          <motion.div
+            className="[transform-style:preserve-3d]"
+            animate={{ rotateY: [-22, 22, -22], rotateX: [10, 5, 10] }}
+            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+          >
             <motion.div
-              key={project.title}
               layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [transform-style:preserve-3d]"
             >
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1, z: cardDepths[index % cardDepths.length] }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  whileHover={{ z: 160 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group relative [transform-style:preserve-3d]"
+                >
               <motion.div
                 className="bg-card border border-border rounded-lg overflow-hidden h-full hover:border-primary transition-all duration-300"
                 whileHover={{ y: -10 }}
@@ -218,9 +231,11 @@ export function Projects() {
                 className="absolute inset-0 bg-primary/10 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity -z-10"
                 initial={false}
               />
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* View more on GitHub */}
         <motion.div
