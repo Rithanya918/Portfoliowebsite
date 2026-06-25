@@ -66,12 +66,13 @@ export function Projects() {
     },
     {
       title: "NYC Restaurant Inspection Dashboard",
-      description: "An interactive Tableau dashboard analyzing NYC restaurant inspection data to surface trends in health grades, violations, cuisine types, and borough-level patterns, helping identify food safety insights across the city.",
+      description: "An interactive Tableau dashboard analyzing NYC restaurant inspection drivers across cuisine risk, operations, borough, and spatial patterns. Surfaces high-risk cuisines, persistent violators, borough deviations, Grade A compliance trends (2020–2023), and spatially clustered low-compliance ZIP codes using LISA clustering and Moran's I.",
       category: "Analytics",
-      tech: ["Tableau", "Data Visualization", "Public Health Data"],
+      tech: ["Tableau", "Spatial Analysis", "LISA / Moran's I", "Data Visualization"],
       github: "",
       demo: "https://public.tableau.com/views/NYCRESTAURANTINSPECTION/NYCRestaurantInspectionDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
       image: "linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%)",
+      imageUrl: "/nyc-restaurant-dashboard.png",
     },
   ];
 
@@ -151,6 +152,13 @@ export function Projects() {
                   className="h-48 relative overflow-hidden"
                   style={{ background: project.image }}
                 >
+                  {project.imageUrl && (
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center transition-all group-hover:bg-black/50">
                     <div className="flex gap-4">
                       {project.github && (
