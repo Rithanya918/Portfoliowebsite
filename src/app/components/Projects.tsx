@@ -73,7 +73,6 @@ export function Projects() {
       github: "",
       demo: "https://public.tableau.com/views/NYCRESTAURANTINSPECTION/NYCRestaurantInspectionDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
       image: "linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%)",
-      imageUrl: "https://github.com/user-attachments/assets/4b26d159-3bcf-44a1-be05-427c8e30f78f",
     },
   ];
 
@@ -86,7 +85,7 @@ export function Projects() {
   // Carousel ring geometry — cards equally spaced around a horizontal circle
   const count = Math.max(filteredProjects.length, 1);
   const angleStep = 360 / count;
-  const radius = Math.max(300, Math.round(170 / Math.tan(Math.PI / count)));
+  const radius = Math.max(330, Math.round(195 / Math.tan(Math.PI / count)));
 
   return (
     <section id="projects" className="min-h-screen py-20 px-6 relative overflow-hidden">
@@ -151,7 +150,7 @@ export function Projects() {
               {filteredProjects.map((project, index) => (
                 <div
                   key={project.title}
-                  className="absolute w-32 h-36 sm:w-36 sm:h-44 md:w-44 md:h-52 [transform-style:preserve-3d]"
+                  className="absolute w-40 h-48 sm:w-44 sm:h-52 md:w-52 md:h-64 [transform-style:preserve-3d]"
                   style={{
                     transform: `translate(-50%, -50%) rotateY(${index * angleStep}deg) translateZ(${radius}px)`,
                   }}
