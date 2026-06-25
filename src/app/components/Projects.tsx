@@ -83,6 +83,11 @@ export function Projects() {
     ? projects
     : projects.filter(project => project.category === activeFilter);
 
+  // Carousel ring geometry — cards equally spaced around a horizontal circle
+  const count = Math.max(filteredProjects.length, 1);
+  const angleStep = 360 / count;
+  const radius = Math.max(300, Math.round(170 / Math.tan(Math.PI / count)));
+
   return (
     <section id="projects" className="min-h-screen py-20 px-6 relative overflow-hidden">
       {/* Background decoration */}
@@ -129,61 +134,64 @@ export function Projects() {
           ))}
         </motion.div>
 
-        {/* Projects — evenly spaced 3D rotating card wall */}
+        {/* Projects — cards orbiting a horizontal circle */}
         <div
-          className="[perspective:1400px]"
-          style={{ perspectiveOrigin: "50% 45%" }}
+          className="flex justify-center [perspective:1300px]"
+          style={{ perspectiveOrigin: "50% 50%" }}
         >
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-12 justify-items-center [transform-style:preserve-3d]"
-            animate={{
-              rotateY: [-36, 36, -36],
-              rotateX: [6, 20, 6],
-              rotateZ: [-3, 3, -3],
-            }}
-            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+          <div
+            className="relative h-[420px] md:h-[520px] w-full [transform-style:preserve-3d]"
+            style={{ transform: "rotateX(12deg)" }}
           >
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1, z: 0 }}
-                exit={{ opacity: 0, scale: 0.85 }}
-                whileHover={{ z: 180, scale: 1.08 }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                onClick={() => setSelectedProject(project)}
-                style={{ transformStyle: "preserve-3d" }}
-                className="group w-32 h-36 sm:w-36 sm:h-44 md:w-44 md:h-52 cursor-pointer"
-              >
-                {/* Tile */}
+            <motion.div
+              className="absolute left-1/2 top-1/2 [transform-style:preserve-3d]"
+              animate={{ rotateY: 360 }}
+              transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
+            >
+              {filteredProjects.map((project, index) => (
                 <div
-                  className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 group-hover:ring-primary/60 transition-all duration-300"
-                  style={{ background: project.image }}
+                  key={project.title}
+                  className="absolute w-32 h-36 sm:w-36 sm:h-44 md:w-44 md:h-52 [transform-style:preserve-3d]"
+                  style={{
+                    transform: `translate(-50%, -50%) rotateY(${index * angleStep}deg) translateZ(${radius}px)`,
+                  }}
                 >
-                  {project.imageUrl && (
-                    <img
-                      src={project.imageUrl}
-                      alt={project.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  )}
-                  {/* Title scrim */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-3">
-                    <span className="text-[10px] uppercase tracking-wider text-primary">
-                      {project.category}
-                    </span>
-                    <h3 className="text-white text-xs sm:text-sm font-semibold leading-tight line-clamp-2">
-                      {project.title}
-                    </h3>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
+                    onClick={() => setSelectedProject(project)}
+                    className="group relative w-full h-full cursor-pointer"
+                  >
+                    {/* Tile */}
+                    <div
+                      className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 group-hover:ring-primary/60 transition-all duration-300"
+                      style={{ background: project.image }}
+                    >
+                      {project.imageUrl && (
+                        <img
+                          src={project.imageUrl}
+                          alt={project.title}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      )}
+                      {/* Title scrim */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 p-3">
+                        <span className="text-[10px] uppercase tracking-wider text-primary">
+                          {project.category}
+                        </span>
+                        <h3 className="text-white text-xs sm:text-sm font-semibold leading-tight line-clamp-2">
+                          {project.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
-
-                {/* Hover glow */}
-                <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
 
         {/* View more on GitHub */}
