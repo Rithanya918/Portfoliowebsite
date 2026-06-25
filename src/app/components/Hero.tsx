@@ -9,17 +9,36 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
-      {/* Animated background gradient */}
+      {/* Dark base */}
+      <div className="absolute inset-0 bg-background" />
+
+      {/* Flowing animated gradient layer */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-red-950/80 via-red-900/60 to-black"
-        animate={{
-          backgroundPosition: ["0% 0%", "100% 100%"],
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(60% 60% at 18% 22%, rgba(220,38,38,0.40), transparent 60%), radial-gradient(55% 55% at 82% 28%, rgba(127,29,29,0.55), transparent 60%), radial-gradient(60% 60% at 50% 85%, rgba(153,27,27,0.40), transparent 60%)",
+          backgroundSize: "200% 200%",
         }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
+        animate={{ backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Soft drifting color blobs */}
+      <motion.div
+        className="absolute -top-40 -left-32 w-[42rem] h-[42rem] rounded-full bg-primary/25 blur-3xl"
+        animate={{ x: [0, 90, 0], y: [0, 60, 0], scale: [1, 1.15, 1] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-1/3 -right-44 w-[38rem] h-[38rem] rounded-full bg-red-700/20 blur-3xl"
+        animate={{ x: [0, -70, 0], y: [0, 80, 0], scale: [1.1, 1, 1.1] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute -bottom-32 left-1/4 w-[36rem] h-[36rem] rounded-full bg-red-900/30 blur-3xl"
+        animate={{ x: [0, 60, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       />
       
       {/* Animated particles */}
@@ -44,6 +63,9 @@ export function Hero() {
           />
         ))}
       </div>
+
+      {/* Blend into the next section */}
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background pointer-events-none" />
 
       {/* Main content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
