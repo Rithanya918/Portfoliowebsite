@@ -9,38 +9,52 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
-      {/* Dark base */}
-      <div className="absolute inset-0 bg-background" />
+      {/* Near-black base */}
+      <div className="absolute inset-0 bg-black" />
 
-      {/* Flowing animated gradient layer */}
-      <motion.div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(60% 60% at 18% 22%, rgba(220,38,38,0.40), transparent 60%), radial-gradient(55% 55% at 82% 28%, rgba(127,29,29,0.55), transparent 60%), radial-gradient(60% 60% at 50% 85%, rgba(153,27,27,0.40), transparent 60%)",
-          backgroundSize: "200% 200%",
-        }}
-        animate={{ backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {/* Blue light pool where the beams land (right side) */}
+      <div className="absolute -right-32 top-1/4 w-[55rem] h-[55rem] rounded-full bg-blue-600/25 blur-3xl" />
+      <div className="absolute right-10 bottom-0 w-[40rem] h-[40rem] rounded-full bg-blue-500/15 blur-3xl" />
 
-      {/* Soft drifting color blobs */}
-      <motion.div
-        className="absolute -top-40 -left-32 w-[42rem] h-[42rem] rounded-full bg-primary/25 blur-3xl"
-        animate={{ x: [0, 90, 0], y: [0, 60, 0], scale: [1, 1.15, 1] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-1/3 -right-44 w-[38rem] h-[38rem] rounded-full bg-red-700/20 blur-3xl"
-        animate={{ x: [0, -70, 0], y: [0, 80, 0], scale: [1.1, 1, 1.1] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute -bottom-32 left-1/4 w-[36rem] h-[36rem] rounded-full bg-red-900/30 blur-3xl"
-        animate={{ x: [0, 60, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-      />
-      
+      {/* Diagonal electric-blue light beams sweeping from the top-right */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -top-1/3 right-[-10%] h-[180%] w-[70%] origin-top-right rotate-[28deg]"
+          animate={{ x: [0, 24, 0], opacity: [0.85, 1, 0.85] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {[
+            { left: "10%", w: "2px", color: "bg-blue-300", glow: "bg-blue-400/40", o: 0.9 },
+            { left: "24%", w: "6px", color: "bg-blue-400", glow: "bg-blue-500/35", o: 0.7 },
+            { left: "40%", w: "3px", color: "bg-sky-300", glow: "bg-sky-400/30", o: 0.85 },
+            { left: "58%", w: "10px", color: "bg-blue-500", glow: "bg-blue-600/30", o: 0.6 },
+            { left: "74%", w: "2px", color: "bg-amber-400", glow: "bg-amber-500/30", o: 0.55 },
+            { left: "88%", w: "5px", color: "bg-blue-400", glow: "bg-blue-500/25", o: 0.5 },
+          ].map((b, i) => (
+            <div
+              key={i}
+              className="absolute top-0 h-full"
+              style={{ left: b.left, opacity: b.o }}
+            >
+              {/* glow halo */}
+              <div
+                className={`absolute inset-y-0 -left-6 w-16 ${b.glow} blur-2xl`}
+              />
+              {/* bright core */}
+              <div
+                className={`h-full ${b.color} blur-[1px]`}
+                style={{ width: b.w }}
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Warm orange glow in the bottom-left corner */}
+      <div className="absolute -bottom-24 -left-24 w-[34rem] h-[34rem] rounded-full bg-orange-600/25 blur-3xl" />
+      <div className="absolute bottom-1/4 left-0 w-[22rem] h-[22rem] rounded-full bg-amber-500/15 blur-3xl" />
+
+
       {/* Blend into the next section */}
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background pointer-events-none" />
 
