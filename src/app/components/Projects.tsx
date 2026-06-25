@@ -79,19 +79,6 @@ export function Projects() {
 
   const categories = ["All", "AI", "Analytics"];
 
-  // Scattered "card wall" layout — mirrors the reference composition:
-  // position, depth, tilt and per-tile scale (front/bottom larger, back/top smaller)
-  const scatter = [
-    { left: "7%", top: "24%", rotate: -4, z: 20, scale: 0.95 },   // left, medium
-    { left: "18%", top: "5%", rotate: 2, z: 0, scale: 0.8 },      // upper, small
-    { left: "35%", top: "9%", rotate: -1, z: 10, scale: 0.82 },   // top center, small
-    { left: "25%", top: "46%", rotate: 1, z: 160, scale: 1.12 },  // front, largest
-    { left: "60%", top: "22%", rotate: -2, z: 0, scale: 0.82 },   // right upper, small
-    { left: "80%", top: "30%", rotate: 3, z: -10, scale: 0.85 },  // far right, small
-    { left: "51%", top: "52%", rotate: -1, z: 90, scale: 1.05 },  // lower center, large
-    { left: "76%", top: "50%", rotate: 2, z: 70, scale: 1.0 },    // lower right, large
-  ];
-
   const filteredProjects = activeFilter === "All"
     ? projects
     : projects.filter(project => project.category === activeFilter);
@@ -142,13 +129,13 @@ export function Projects() {
           ))}
         </motion.div>
 
-        {/* Projects — scattered 3D rotating card wall */}
+        {/* Projects — evenly spaced 3D rotating card wall */}
         <div
           className="[perspective:1400px]"
           style={{ perspectiveOrigin: "50% 45%" }}
         >
           <motion.div
-            className="relative h-[460px] sm:h-[520px] md:h-[600px] [transform-style:preserve-3d]"
+            className="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-12 justify-items-center [transform-style:preserve-3d]"
             animate={{
               rotateY: [-36, 36, -36],
               rotateX: [6, 20, 6],
@@ -156,54 +143,46 @@ export function Projects() {
             }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
           >
-            {filteredProjects.map((project, index) => {
-              const pos = scatter[index % scatter.length];
-              return (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, scale: pos.scale * 0.85 }}
-                  animate={{ opacity: 1, scale: pos.scale, z: pos.z }}
-                  exit={{ opacity: 0, scale: pos.scale * 0.85 }}
-                  whileHover={{ z: pos.z + 180, scale: pos.scale * 1.08 }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
-                  onClick={() => setSelectedProject(project)}
-                  style={{
-                    left: pos.left,
-                    top: pos.top,
-                    rotate: pos.rotate,
-                    transformStyle: "preserve-3d",
-                  }}
-                  className="group absolute w-32 h-36 sm:w-36 sm:h-44 md:w-44 md:h-52 cursor-pointer"
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{ opacity: 1, scale: 1, z: 0 }}
+                exit={{ opacity: 0, scale: 0.85 }}
+                whileHover={{ z: 180, scale: 1.08 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                onClick={() => setSelectedProject(project)}
+                style={{ transformStyle: "preserve-3d" }}
+                className="group w-32 h-36 sm:w-36 sm:h-44 md:w-44 md:h-52 cursor-pointer"
+              >
+                {/* Tile */}
+                <div
+                  className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 group-hover:ring-primary/60 transition-all duration-300"
+                  style={{ background: project.image }}
                 >
-                  {/* Tile */}
-                  <div
-                    className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 group-hover:ring-primary/60 transition-all duration-300"
-                    style={{ background: project.image }}
-                  >
-                    {project.imageUrl && (
-                      <img
-                        src={project.imageUrl}
-                        alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                    )}
-                    {/* Title scrim */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-3">
-                      <span className="text-[10px] uppercase tracking-wider text-primary">
-                        {project.category}
-                      </span>
-                      <h3 className="text-white text-xs sm:text-sm font-semibold leading-tight line-clamp-2">
-                        {project.title}
-                      </h3>
-                    </div>
+                  {project.imageUrl && (
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  )}
+                  {/* Title scrim */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-3">
+                    <span className="text-[10px] uppercase tracking-wider text-primary">
+                      {project.category}
+                    </span>
+                    <h3 className="text-white text-xs sm:text-sm font-semibold leading-tight line-clamp-2">
+                      {project.title}
+                    </h3>
                   </div>
+                </div>
 
-                  {/* Hover glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
-                </motion.div>
-              );
-            })}
+                {/* Hover glow */}
+                <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
+              </motion.div>
+            ))}
           </motion.div>
         </div>
 
