@@ -76,7 +76,7 @@ export function Projects() {
     },
   ];
 
-  const categories = ["All", "AI", "Analytics", "Automation", "Infrastructure"];
+  const categories = ["All", "AI", "Analytics"];
 
   const filteredProjects = activeFilter === "All"
     ? projects
