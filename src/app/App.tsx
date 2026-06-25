@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Navigation } from "./components/Navigation";
+import { RedGlowField } from "./components/RedGlowField";
 import { ParticlesField } from "./components/ParticlesField";
 import { Hero } from "./components/Hero";
 import { Certifications } from "./components/Certifications";
@@ -18,6 +19,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground dark">
+      <RedGlowField />
       <ParticlesField />
       <Navigation />
 
