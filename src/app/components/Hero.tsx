@@ -114,27 +114,21 @@ export function Hero() {
           >
             <motion.button
               onClick={() => scrollToSection("contact")}
-              className="group relative px-8 py-4 bg-primary text-white rounded-lg overflow-hidden"
+              className="group px-8 py-4 rounded-2xl border border-white/10 bg-background/30 backdrop-blur-xl shadow-lg shadow-black/20 text-foreground hover:border-primary hover:text-primary transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="relative z-10 flex items-center gap-2">
+              <span className="flex items-center gap-2">
                 <Mail className="w-5 h-5" />
                 Get In Touch
               </span>
-              <motion.div
-                className="absolute inset-0 bg-secondary"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
             </motion.button>
 
             <motion.a
               href="https://www.linkedin.com/in/rithanya-sekar-/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group px-8 py-4 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+              className="group px-8 py-4 rounded-2xl border border-white/10 bg-background/30 backdrop-blur-xl shadow-lg shadow-black/20 text-foreground hover:border-primary hover:text-primary transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

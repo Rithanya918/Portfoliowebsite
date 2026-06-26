@@ -163,7 +163,7 @@ export function Skills() {
                 whileHover={{ scale: 1.02, y: -5 }}
               >
                 {/* Category header */}
-                <div className="flex flex-col items-start gap-3 mb-6">
+                <div className="flex flex-col items-center text-center gap-3 mb-6">
                   <motion.div
                     className={`p-3 rounded-lg bg-gradient-to-br ${category.color}`}
                     whileHover={{ rotate: 360 }}
