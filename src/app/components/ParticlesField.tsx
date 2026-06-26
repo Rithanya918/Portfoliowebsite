@@ -15,7 +15,7 @@ export function ParticlesField() {
       {[...Array(28)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-blue-400/40 rounded-full"
+          className="absolute w-2 h-2 bg-red-500/40 rounded-full"
           initial={{
             x: Math.random() * width,
             y: Math.random() * height,
