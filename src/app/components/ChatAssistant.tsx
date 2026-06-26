@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useState, useRef, useEffect } from "react";
-import { Send, Sparkles } from "lucide-react";
+import { Send } from "lucide-react";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -71,8 +71,12 @@ export function ChatPanel({ className = "" }: { className?: string }) {
     >
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10">
-        <div className="w-9 h-9 rounded-full bg-primary/15 flex items-center justify-center">
-          <Sparkles className="w-5 h-5 text-primary" />
+        <div className="w-9 h-9 rounded-full overflow-hidden border border-primary/40 flex-shrink-0">
+          <img
+            src="https://github.com/user-attachments/assets/94d118a3-8fb9-4d3b-97ff-ee1bb6634889"
+            alt="Rithanya Sekar"
+            className="w-full h-full object-cover"
+          />
         </div>
         <div className="flex-1">
           <p className="text-sm font-semibold leading-tight">Rithu</p>
