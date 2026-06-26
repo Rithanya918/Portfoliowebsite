@@ -1,4 +1,3 @@
-import Anthropic from "@anthropic-ai/sdk";
 import { KNOWLEDGE } from "./_knowledge";
 
 /**
@@ -28,18 +27,21 @@ ${KNOWLEDGE}`;
 type Msg = { role: "user" | "assistant"; content: string };
 
 export default async function handler(req: any, res: any) {
-  if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed" });
-    return;
-  }
-
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    res.status(500).json({ error: "Server is not configured." });
-    return;
-  }
-
   try {
+    if (req.method !== "POST") {
+      res.status(405).json({ error: "Method not allowed" });
+      return;
+    }
+
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+    if (!apiKey) {
+      res.status(500).json({ error: "Server is not configured (ANTHROPIC_API_KEY missing)." });
+      return;
+    }
+
+    // Lazy import so any module-load failure is caught and reported, not a hard crash.
+    const { default: Anthropic } = await import("@anthropic-ai/sdk");
+
     const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
     const rawMessages: Msg[] = Array.isArray(body?.messages) ? body.messages : [];
 
@@ -70,8 +72,12 @@ export default async function handler(req: any, res: any) {
       .trim();
 
     res.status(200).json({ reply: reply || "Sorry, I couldn't generate a response. Please try again." });
-  } catch (err) {
+  } catch (err: any) {
     console.error("chat error", err);
-    res.status(500).json({ error: "Something went wrong. Please try again." });
+    // TEMPORARY DIAGNOSTIC: surface the real error so we can see why the function fails.
+    res.status(500).json({
+      error: "Something went wrong. Please try again.",
+      debug: { message: String(err?.message || err), name: err?.name, stack: err?.stack },
+    });
   }
 }
