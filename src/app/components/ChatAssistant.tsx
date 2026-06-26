@@ -5,16 +5,16 @@ import { MessageCircle, X, Send, Sparkles } from "lucide-react";
 type Message = { role: "user" | "assistant"; content: string };
 
 const SUGGESTIONS = [
-  "What's her AI & ML experience?",
-  "Summarize her work experience",
-  "What roles is she looking for?",
-  "Tell me about her projects",
+  "What's your AI & ML experience?",
+  "Summarize your work experience",
+  "What roles are you looking for?",
+  "Tell me about your projects",
 ];
 
 const GREETING: Message = {
   role: "assistant",
   content:
-    "Hi! I'm Rithanya's portfolio assistant. Ask me about her experience, skills, projects, or education.",
+    "Hi, I'm Rithu — that's me, Rithanya 👋 Ask me anything about my experience, skills, projects, or education.",
 };
 
 export function ChatAssistant() {
@@ -101,8 +101,8 @@ export function ChatAssistant() {
                 <Sparkles className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <p className="text-sm font-semibold leading-tight">Ask about Rithanya</p>
-                <p className="text-xs text-muted-foreground leading-tight">AI assistant</p>
+                <p className="text-sm font-semibold leading-tight">Rithu</p>
+                <p className="text-xs text-muted-foreground leading-tight">Rithanya's AI — ask me anything</p>
               </div>
             </div>
 
