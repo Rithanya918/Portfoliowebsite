@@ -159,7 +159,7 @@ export function Skills() {
               className="relative"
             >
               <motion.div
-                className="bg-card border border-border rounded-lg p-6 h-full hover:border-primary transition-all duration-300"
+                className="bg-background/30 border border-white/10 rounded-2xl p-6 h-full backdrop-blur-xl shadow-lg shadow-black/20 hover:border-primary transition-all duration-300"
                 whileHover={{ scale: 1.02, y: -5 }}
               >
                 {/* Category header */}
