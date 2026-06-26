@@ -1,15 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Navigation } from "./components/Navigation";
 import { RedGlowField } from "./components/RedGlowField";
 import { ParticlesField } from "./components/ParticlesField";
 import { Hero } from "./components/Hero";
-import { Certifications } from "./components/Certifications";
-import { Skills } from "./components/Skills";
-import { Projects } from "./components/Projects";
-import { Experience } from "./components/Experience";
-import { ThoughtLeadership } from "./components/ThoughtLeadership";
-import { Contact } from "./components/Contact";
-import { Footer } from "./components/Footer";
+
+// Below-the-fold sections are code-split so the initial load is just the hero.
+const Projects = lazy(() => import("./components/Projects").then((m) => ({ default: m.Projects })));
+const Certifications = lazy(() => import("./components/Certifications").then((m) => ({ default: m.Certifications })));
+const Skills = lazy(() => import("./components/Skills").then((m) => ({ default: m.Skills })));
+const Experience = lazy(() => import("./components/Experience").then((m) => ({ default: m.Experience })));
+const ThoughtLeadership = lazy(() => import("./components/ThoughtLeadership").then((m) => ({ default: m.ThoughtLeadership })));
+const Contact = lazy(() => import("./components/Contact").then((m) => ({ default: m.Contact })));
+const Footer = lazy(() => import("./components/Footer").then((m) => ({ default: m.Footer })));
 
 export default function App() {
   useEffect(() => {
@@ -25,15 +27,19 @@ export default function App() {
 
       <main>
         <Hero />
-        <Projects />
-        <Certifications />
-        <Skills />
-        <Experience />
-        <ThoughtLeadership />
-        <Contact />
+        <Suspense fallback={null}>
+          <Projects />
+          <Certifications />
+          <Skills />
+          <Experience />
+          <ThoughtLeadership />
+          <Contact />
+        </Suspense>
       </main>
 
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
