@@ -66,9 +66,25 @@ export function ChatPanel({ className = "" }: { className?: string }) {
   };
 
   return (
-    <div
-      className={`flex flex-col rounded-2xl border border-white/10 bg-background/70 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden ${className}`}
-    >
+    <div className={`relative ${className}`}>
+      {/* Soft red outer halo */}
+      <div aria-hidden className="absolute -inset-3 rounded-[1.75rem] bg-primary/25 blur-2xl -z-10" />
+
+      {/* Animated red gradient glow running around the rim */}
+      <div aria-hidden className="absolute inset-0 rounded-2xl overflow-hidden">
+        <motion.div
+          className="absolute left-1/2 top-1/2 h-[220%] w-[220%] -translate-x-1/2 -translate-y-1/2"
+          style={{
+            background:
+              "conic-gradient(from 0deg, transparent 0deg, #ef4444 40deg, #b91c1c 85deg, transparent 150deg, transparent 215deg, #f87171 260deg, #7f1d1d 300deg, transparent 355deg)",
+          }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+
+      {/* Inner panel — sits just inside the rim so the glow shows as a border */}
+      <div className="absolute inset-[1.5px] flex flex-col rounded-[15px] border border-white/10 bg-background/90 backdrop-blur-xl overflow-hidden">
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10">
         <div className="w-9 h-9 rounded-full overflow-hidden border border-primary/40 flex-shrink-0">
@@ -158,6 +174,7 @@ export function ChatPanel({ className = "" }: { className?: string }) {
           <Send className="w-4 h-4" />
         </button>
       </form>
+      </div>
     </div>
   );
 }
