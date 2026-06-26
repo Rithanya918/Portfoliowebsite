@@ -135,7 +135,7 @@ export function Projects() {
 
         {/* Projects — cards orbiting a horizontal circle */}
         <div
-          className="flex justify-center [perspective:1300px]"
+          className="flex justify-center [perspective:1300px] mt-12 md:mt-16"
           style={{ perspectiveOrigin: "50% 50%" }}
         >
           <div
