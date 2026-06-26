@@ -49,7 +49,7 @@ export function Hero() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
         {/* Left column */}
         <motion.div
-          className="text-center lg:text-left"
+          className="text-center lg:text-left lg:-ml-8 xl:-ml-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
