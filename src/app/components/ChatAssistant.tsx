@@ -84,7 +84,7 @@ export function ChatPanel({ className = "" }: { className?: string }) {
       </div>
 
       {/* Inner panel — sits just inside the rim so the glow shows as a border */}
-      <div className="absolute inset-[1.5px] flex flex-col rounded-[15px] border border-white/10 bg-background/90 backdrop-blur-xl overflow-hidden">
+      <div className="absolute inset-[3.5px] flex flex-col rounded-[13px] border border-white/10 bg-background/90 backdrop-blur-xl overflow-hidden">
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10">
         <div className="w-9 h-9 rounded-full overflow-hidden border border-primary/40 flex-shrink-0">
