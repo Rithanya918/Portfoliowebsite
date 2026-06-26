@@ -136,7 +136,7 @@ export function Skills() {
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
+      <div className="max-w-[1600px] mx-auto relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -149,7 +149,7 @@ export function Skills() {
           <div className="w-20 h-1 bg-primary mx-auto mb-8" />
         </motion.div>
 
-        <div className="flex flex-col gap-4 max-w-7xl mx-auto">
+        <div className="flex flex-col gap-4 w-full">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={categoryIndex}
@@ -173,11 +173,11 @@ export function Skills() {
                 </div>
 
                 {/* Right: skills as tags */}
-                <div className="flex flex-wrap gap-2 md:flex-1 md:border-l md:border-white/10 md:pl-6">
+                <div className="flex flex-wrap gap-1.5 md:flex-1 md:border-l md:border-white/10 md:pl-6">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.span
                       key={skillIndex}
-                      className="px-3 py-1.5 bg-muted/50 rounded-full text-sm text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                      className="px-2.5 py-1 bg-muted/50 rounded-full text-[13px] text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
                       initial={{ opacity: 0, scale: 0 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{
