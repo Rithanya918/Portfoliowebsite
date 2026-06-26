@@ -175,12 +175,8 @@ export default async function handler(req: any, res: any) {
       .trim();
 
     res.status(200).json({ reply: reply || "Sorry, I couldn't generate a response. Please try again." });
-  } catch (err: any) {
+  } catch (err) {
     console.error("chat error", err);
-    // TEMPORARY DIAGNOSTIC: surface the real upstream error.
-    res.status(500).json({
-      error: "Something went wrong. Please try again.",
-      debug: { message: String(err?.message || err), status: err?.status, name: err?.name },
-    });
+    res.status(500).json({ error: "Something went wrong. Please try again." });
   }
 }
