@@ -149,42 +149,40 @@ export function Skills() {
           <div className="w-20 h-1 bg-primary mx-auto mb-8" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex flex-col gap-4 max-w-5xl mx-auto">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={categoryIndex}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="relative"
+              className="bg-background/30 border border-white/10 rounded-2xl p-5 md:p-6 backdrop-blur-xl shadow-lg shadow-black/20 hover:border-primary transition-all duration-300"
+              whileHover={{ y: -3 }}
             >
-              <motion.div
-                className="bg-background/30 border border-white/10 rounded-2xl p-6 h-full backdrop-blur-xl shadow-lg shadow-black/20 hover:border-primary transition-all duration-300"
-                whileHover={{ scale: 1.02, y: -5 }}
-              >
-                {/* Category header */}
-                <div className="flex flex-col items-center text-center gap-3 mb-6">
+              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                {/* Left: icon + title */}
+                <div className="flex items-center gap-3 md:w-64 md:flex-shrink-0">
                   <motion.div
-                    className={`p-3 rounded-lg bg-gradient-to-br ${category.color}`}
+                    className={`p-3 rounded-lg bg-gradient-to-br ${category.color} flex-shrink-0`}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
                     <category.icon className="w-6 h-6 text-white" />
                   </motion.div>
-                  <h3 className="text-lg font-semibold text-primary">{category.category}</h3>
+                  <h3 className="text-lg font-semibold text-primary leading-tight">{category.category}</h3>
                 </div>
 
-                {/* Skills as tags */}
-                <div className="flex flex-wrap gap-2">
+                {/* Right: skills as tags */}
+                <div className="flex flex-wrap gap-2 md:flex-1 md:border-l md:border-white/10 md:pl-6">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.span
                       key={skillIndex}
                       className="px-3 py-1.5 bg-muted/50 rounded-full text-sm text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
                       initial={{ opacity: 0, scale: 0 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ 
-                        duration: 0.3, 
-                        delay: categoryIndex * 0.1 + skillIndex * 0.05 
+                      transition={{
+                        duration: 0.3,
+                        delay: categoryIndex * 0.1 + skillIndex * 0.03,
                       }}
                       whileHover={{ scale: 1.05 }}
                     >
@@ -192,7 +190,7 @@ export function Skills() {
                     </motion.span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>
