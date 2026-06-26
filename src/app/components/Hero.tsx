@@ -54,47 +54,23 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Profile Picture - Using GitHub image */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-6"
-          >
-            <div className="relative inline-block">
-              <motion.div
-                className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl"
-                whileHover={{ scale: 1.05, borderColor: "rgb(220, 38, 38)" }}
-                transition={{ duration: 0.3 }}
-              >
-                <img
-                  src="https://github.com/user-attachments/assets/94d118a3-8fb9-4d3b-97ff-ee1bb6634889"
-                  alt="Rithanya Sekar"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-              {/* Glow effect */}
-              <div className="absolute inset-0 rounded-full bg-primary/20 blur-2xl -z-10" />
-            </div>
-          </motion.div>
-
-          <motion.p
-            className="text-primary mb-4 tracking-wider uppercase text-xs md:text-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            AI & ANALYTICS PROFESSIONAL | SYSTEMS THINKER | TECH STRATEGIST
-          </motion.p>
-
           <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-3 bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+            transition={{ duration: 0.8 }}
           >
             Rithanya <span className="text-primary">Sekar</span>
           </motion.h1>
+
+          <motion.p
+            className="text-primary mb-6 tracking-wider uppercase text-xs md:text-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            AI & ANALYTICS PROFESSIONAL | SYSTEMS THINKER | TECH STRATEGIST
+          </motion.p>
 
           <motion.p
             className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
