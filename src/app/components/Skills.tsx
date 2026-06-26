@@ -149,7 +149,7 @@ export function Skills() {
           <div className="w-20 h-1 bg-primary mx-auto mb-8" />
         </motion.div>
 
-        <div className="flex flex-col gap-4 max-w-5xl mx-auto">
+        <div className="flex flex-col gap-4 max-w-7xl mx-auto">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={categoryIndex}
@@ -161,7 +161,7 @@ export function Skills() {
             >
               <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
                 {/* Left: icon + title */}
-                <div className="flex items-center gap-3 md:w-64 md:flex-shrink-0">
+                <div className="flex items-center gap-3 md:w-52 md:flex-shrink-0">
                   <motion.div
                     className={`p-3 rounded-lg bg-gradient-to-br ${category.color} flex-shrink-0`}
                     whileHover={{ rotate: 360 }}
