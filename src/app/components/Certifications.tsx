@@ -79,53 +79,60 @@ export function Certifications() {
           <div className="w-20 h-1 bg-primary mx-auto mb-8" />
         </motion.div>
 
-        {/* Certifications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, index) => (
-            <motion.a
-              key={index}
-              href={cert.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group block"
-            >
-              <motion.div
-                className="bg-card border border-border rounded-lg p-6 h-full hover:border-primary transition-all duration-300 flex flex-col relative"
-                whileHover={{ scale: 1.05, y: -5 }}
+        {/* Certifications — horizontal auto-scrolling marquee */}
+        <div className="group/marquee relative overflow-hidden">
+          {/* Edge fades */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-20 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-20 bg-gradient-to-l from-background to-transparent" />
+
+          <motion.div
+            className="flex gap-6 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+          >
+            {[...certifications, ...certifications].map((cert, index) => (
+              <a
+                key={index}
+                href={cert.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block w-72 flex-shrink-0"
               >
-                {/* External link icon - appears on hover */}
                 <motion.div
-                  className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                  initial={{ scale: 0 }}
-                  whileHover={{ scale: 1.2 }}
+                  className="bg-card border border-border rounded-lg p-6 h-full hover:border-primary transition-all duration-300 flex flex-col relative"
+                  whileHover={{ scale: 1.05, y: -5 }}
                 >
-                  <ExternalLink className="w-5 h-5 text-primary" />
+                  {/* External link icon - appears on hover */}
+                  <motion.div
+                    className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                    initial={{ scale: 0 }}
+                    whileHover={{ scale: 1.2 }}
+                  >
+                    <ExternalLink className="w-5 h-5 text-primary" />
+                  </motion.div>
+
+                  {/* Certificate Image */}
+                  <div className="mb-4 overflow-hidden rounded-lg bg-white p-2">
+                    <img
+                      src={cert.image}
+                      alt={cert.title}
+                      className="w-full h-40 object-cover rounded"
+                    />
+                  </div>
+
+                  <h4 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                    {cert.title}
+                  </h4>
+                  <p className="text-muted-foreground text-sm mb-2 flex-grow">
+                    {cert.issuer}
+                  </p>
+                  <p className="text-muted-foreground text-xs">
+                    {cert.date}
+                  </p>
                 </motion.div>
-
-                {/* Certificate Image */}
-                <div className="mb-4 overflow-hidden rounded-lg bg-white p-2">
-                  <img 
-                    src={cert.image} 
-                    alt={cert.title}
-                    className="w-full h-40 object-cover rounded"
-                  />
-                </div>
-
-                <h4 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
-                  {cert.title}
-                </h4>
-                <p className="text-muted-foreground text-sm mb-2 flex-grow">
-                  {cert.issuer}
-                </p>
-                <p className="text-muted-foreground text-xs">
-                  {cert.date}
-                </p>
-              </motion.div>
-            </motion.a>
-          ))}
+              </a>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
