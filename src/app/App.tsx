@@ -10,7 +10,6 @@ import { Experience } from "./components/Experience";
 import { ThoughtLeadership } from "./components/ThoughtLeadership";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
-import { ChatAssistant } from "./components/ChatAssistant";
 
 export default function App() {
   useEffect(() => {
@@ -35,7 +34,6 @@ export default function App() {
       </main>
 
       <Footer />
-      <ChatAssistant />
     </div>
   );
 }

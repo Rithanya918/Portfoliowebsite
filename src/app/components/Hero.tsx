@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ChevronDown, Mail, Linkedin } from "lucide-react";
+import { ChatPanel } from "./ChatAssistant";
 
 export function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -44,9 +45,11 @@ export function Hero() {
       {/* Blend into the next section */}
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background pointer-events-none" />
 
-      {/* Main content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+      {/* Main content — two columns: text left, chat right */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+        {/* Left column */}
         <motion.div
+          className="text-center lg:text-left"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -56,16 +59,16 @@ export function Hero() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8"
+            className="mb-6"
           >
             <div className="relative inline-block">
               <motion.div
-                className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl mx-auto"
+                className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl"
                 whileHover={{ scale: 1.05, borderColor: "rgb(220, 38, 38)" }}
                 transition={{ duration: 0.3 }}
               >
-                <img 
-                  src="https://github.com/user-attachments/assets/94d118a3-8fb9-4d3b-97ff-ee1bb6634889" 
+                <img
+                  src="https://github.com/user-attachments/assets/94d118a3-8fb9-4d3b-97ff-ee1bb6634889"
                   alt="Rithanya Sekar"
                   className="w-full h-full object-cover"
                 />
@@ -76,38 +79,38 @@ export function Hero() {
           </motion.div>
 
           <motion.p
-            className="text-primary mb-4 tracking-wider uppercase text-sm md:text-base"
+            className="text-primary mb-4 tracking-wider uppercase text-xs md:text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
             AI & ANALYTICS PROFESSIONAL | SYSTEMS THINKER | TECH STRATEGIST
           </motion.p>
-          
+
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
             Rithanya <span className="text-primary">Sekar</span>
           </motion.h1>
-          
+
           <motion.p
-            className="text-base md:text-lg lg:text-lg text-muted-foreground mb-12 max-w-7xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
-            Results-driven Business Analyst and Product Owner with expertise in analytics, AI systems, and digital transformation. 
-            Skilled in translating complex data into actionable insights, optimizing workflows, and driving measurable business impact 
+            Results-driven Business Analyst and Product Owner with expertise in analytics, AI systems, and digital transformation.
+            Skilled in translating complex data into actionable insights, optimizing workflows, and driving measurable business impact
             through data-driven decision-making and stakeholder collaboration. <span className="text-primary">AI-powered insights</span> and
             <span className="text-primary"> systems thinking</span>
           </motion.p>
 
           {/* Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
@@ -138,6 +141,16 @@ export function Hero() {
               </span>
             </motion.a>
           </motion.div>
+        </motion.div>
+
+        {/* Right column — always-open chat */}
+        <motion.div
+          className="w-full"
+          initial={{ opacity: 0, y: 30, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <ChatPanel className="w-full h-[32rem] lg:h-[34rem] max-h-[80vh]" />
         </motion.div>
       </div>
 
