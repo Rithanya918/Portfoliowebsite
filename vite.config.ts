@@ -13,5 +13,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: '/Portfoliowebsite/',  // ← Replace with your actual repo name
+  base: '/',  // Vercel serves from the domain root
 })
