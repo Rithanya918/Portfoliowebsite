@@ -12,102 +12,99 @@
 export const KNOWLEDGE = `
 # About Rithanya Sekar
 
-Rithanya Sekar is an AI & Analytics professional, systems thinker, and tech strategist.
-She is a results-driven Business Analyst and Product Owner with expertise in analytics,
-AI systems, and digital transformation. She specializes in translating complex data into
-actionable insights, optimizing workflows, and driving measurable business impact through
-data-driven decision-making and stakeholder collaboration. Her strengths center on
-AI-powered insights and systems thinking.
+Rithanya Sekar is a Business Analyst, AI Product Manager/Owner, Data Analyst, Scrum Master, and Process Automation specialist with 3+ years of progressive experience across business analysis, product ownership, data analytics, process automation, and hands-on AI development in SaaS, EdTech, and enterprise environments.
+
+She bridges business stakeholders and engineering teams — turning ambiguous operational problems into clear, actionable requirements and measurable outcomes. She is also a hands-on builder of AI systems, including AROS (an AI hallucination-detection platform) and Payanam (an agentic workflow automation tool). She combines an architect's systems-thinking with a bias toward action and building.
+
+Certifications include PSPO I, Lean Six Sigma Black Belt, and AWS AI Practitioner. She holds an MS in Information Systems (AI & Business Analytics) from Florida International University (GPA 3.98). She won the BankUnited Atom Pink Tank competition and received the 2026 FIU Outstanding Leadership Award at the Graduate Level.
+
+# Location & Work Authorization
+- Based in Orlando, FL; open to relocate nationally.
+- No sponsorship needed / authorized to work in the US.
 
 # Contact
 - LinkedIn: https://www.linkedin.com/in/rithanya-sekar-/
 - GitHub: https://github.com/Rithanya918
 - Email: rithanyasekar09@gmail.com
 
-# Education
-- Master's in Information Systems Management — University of Maryland, Robert H. Smith
-  School of Business (Aug 2023 – Dec 2024), GPA 3.7
-- Bachelor of Technology in Information Technology — JNTUH College of Engineering,
-  Hyderabad (2017 – 2021), GPA 3.53
+# Roles she is interested in
+Business Analyst; Product Owner / Associate Product Manager; Data / BI Analyst; Scrum Master / Agile facilitator; AI Operations & Process Automation; and Technical Program Manager — especially roles combining data, AI systems, and digital transformation.
 
 # Experience
 
-## Associate Product Manager – Analytics & AI Systems — Jungroo Learning (2021–2024)
-Provided strategic data science consulting focused on AI adoption and analytics transformation.
-- Owned the analytics and experimentation roadmap, driving a 15–20% rise in engagement and
-  conversion through data-driven optimization.
-- Established product vision, KPIs, and experimentation strategy, accelerating prioritization
-  cycles by ~25% and boosting execution speed.
-- Led end-to-end delivery of analytics products, translating business problems into scalable
-  insights and dashboards, reducing decision latency by ~30%.
-- Drove cross-functional execution and data governance, improving reporting accuracy by ~35%
-  and informing executive roadmap decisions.
+## Graduate Assistant — Academic Space Management, Florida International University (Aug 2025 – Apr 2026, part-time during MS)
+Data analyst and requirements liaison for the Academic Space Management department.
+- Translated space-management needs from 10+ academic-unit stakeholders into structured requirements and reporting deliverables; maintained tracking across 60+ academic units.
+- Extracted/validated/transformed space-utilization data via PantherSoft (PeopleSoft) and collaborated with the FAMIS platform team; built SQL-based reporting and automated solutions that cut manual prep.
+- Served as the primary liaison between academic stakeholders and technical platform teams; presented status to university management; applied Agile workflow principles to competing requests.
+- Tools: PantherSoft (PeopleSoft), FAMIS, SQL, Python (Pandas), Advanced Excel, SharePoint, JIRA.
 
-## Business Analyst — Jungroo Learning (2019–2021)
-Embedded within cross-functional product teams; responsible for problem discovery,
-data-driven decision support, experimentation, and stakeholder alignment across digital
-learning platforms. Acted as a bridge between business, product, and technical teams.
-- Analyzed learner and educator behavior across platform workflows, identifying friction
-  points that led to ~18% improvement in feature adoption.
-- Partnered with 6+ product and engineering teams to refine user stories and acceptance
-  criteria, reducing requirement rework by ~30%.
-- Built cohort-based performance analyses and insight reports influencing quarterly roadmap
-  prioritization.
-- Streamlined reporting and data-collection processes, cutting manual analysis effort by ~40%.
+## Associate Product Owner — Jungroo Learning (Oct 2022 – Nov 2024, remote; EdTech/AI)
+Owned the end-to-end product backlog for an Analytics & AI Systems platform; facilitated all Agile ceremonies; acted as de facto Scrum Master across 5 multi-phase delivery cycles.
+- Authored epics, user stories, and acceptance criteria (DoR/DoD compliance); reframed requests through an AI-first lens to find automation opportunities.
+- Facilitated Sprint Planning, Daily Scrum, Reviews, Retrospectives, and Backlog Grooming; tracked velocity; coached on story splitting; maintained JIRA boards and Kanban workflows.
+- Led release planning across 5 cycles; used WBS in MS Project/JIRA to decompose 25+ features into milestones; coordinated engineering, QA, data science, UX, and business.
+- Built a product analytics framework (SQL + behavioral data) for feature-level adoption; ran regression, hypothesis testing, and A/B experiments (Python, PostgreSQL); defined KPIs (DAU, adoption, reliability).
+- Used Claude/ChatGPT to accelerate backlog refinement and documentation; ran buy/build/partner evaluations of AI capabilities.
+- Outcomes: +37–40% platform adoption; +21% reliability via root-cause analysis; +25% assessment-quality reliability; delivered 25+ features on time.
+- Tools: JIRA, Confluence, Azure DevOps, MS Project, Python (Pandas/NumPy), SQL (PostgreSQL), Power BI, Tableau, Claude, ChatGPT, Figma.
 
-# Skills
+## Business Analyst — Jungroo Learning (Nov 2021 – Sep 2022, remote; EdTech)
+Primary BA bridging HR operations, IT, and business units during platform automation and system integration.
+- Gathered/documented requirements, user stories, and process flows; maintained a Requirements Traceability Matrix; created AS-IS/TO-BE process maps and Figma wireframes.
+- Designed and automated Python-based ETL workflows (MySQL), reducing manual data-prep workload by 40% and improving data consistency.
+- Built and maintained Power BI and Tableau dashboards serving 200,000+ users; connected to MySQL/PostgreSQL with data models and DAX; used QlikView for analytical reports.
+- Authored documentation and led end-user training; applied Lean Six Sigma to identify process improvements.
+- Tools: Python (Pandas/NumPy), MySQL, Power BI, Tableau, QlikView, Figma, SQL, Advanced Excel, JIRA, Confluence.
 
-- Product Management & Strategy: Product Roadmaps, Feature Prioritization, KPI Definition &
-  Tracking, Leadership Reviews, Stakeholder Alignment, Change Management, Agile Scrum,
-  Experiment Design, A/B Testing, BRDs & Specs, UAT Management, Risk Management
-- AI & Machine Learning: Generative AI, LLMs, Agentic AI, Autonomous Workflows, LangChain,
-  LangGraph, CrewAI, Microsoft AutoGen, MCP, Gemini, OpenAI API/SDK, Bedrock, ElevenLabs,
-  Conversational AI, RAG Systems, Digital Twin Development, LangSmith
-- Programming & Prototyping: Python, JavaScript, n8n (Automation), Gradio, API Development,
-  API Integration, Rapid Prototyping
-- Cloud & Data Platforms: AWS, Bedrock, Lambda, S3, GCP, Vertex AI, BigQuery, Azure,
-  Snowflake, Kubernetes, Docker, MongoDB, SQL, PySpark
-- SDLC & Infrastructure: CI/CD, Microservices, API Integration, Monitoring, Observability,
-  Distributed Systems
-- Analytics & Visualization: Power BI, Tableau, Looker, KPI Dashboards, Data-Driven Decision
-  Making, Experiment Analysis, Data Visualization
-- Tools & Delivery: Jira, Confluence, Figma, Airflow, Kafka, Technical Documentation,
-  Cross-Functional Leadership
+## Project Architect — Claypot Architecture (Aug 2017 – Aug 2019, India)
+End-to-end project planning, scheduling, and cross-disciplinary coordination across architectural design and construction projects.
+- Built project schedules, WBS, and Gantt charts; coordinated contractors, consultants, and engineers; managed scope, timelines, and risks across multiple projects.
+- Produced technical drawings/specs; presented status to clients and leadership; this role established the systems-thinking and stakeholder-coordination foundation behind her current technology work.
+- Tools: AutoCAD, Revit, MS Project, Advanced Excel.
 
 # Projects
 
-- AROS – AI Reliability Overlay System: Detects and prevents AI hallucinations via real-time
-  verification of responses across platforms like ChatGPT, Claude, and Gemini. Confidence
-  scoring (0–100) with detailed breakdowns and color-coded risk insights.
-  Tech: React, TypeScript, Vite, Tailwind CSS. Live: https://aros-1.lovable.app/
-  Code: https://github.com/Rithanya918/AROS
-- AI-Powered Travel Agent (Payanam): Intelligent travel booking assistant using GPT-3.5-turbo
-  and LangGraph for flights, hotels, and packages via form and AI chat.
-  Code: https://github.com/Rithanya918/Payanam
-- Customer Booking Predictive Model (British Airways): ML model predicting flight booking
-  completion; identifies 78% of customers who will complete bookings.
-  Code: https://github.com/Rithanya918/British-Airways_Predictive-Modeling-of-Customer-Bookings
-- AI-Driven Dynamic Pricing Engine: Pricing optimization using ML and real-time analytics —
-  automated price recommendations, competitor monitoring, and executive insights.
-  Code: https://github.com/Rithanya918/CGPricing/tree/master
-- NYC Restaurant Inspection Dashboard: Interactive Tableau dashboard on inspection drivers —
-  cuisine risk, persistent violators, borough deviations, Grade A trends (2020–2023), and
-  spatial clustering via LISA / Moran's I.
-- Pizza Sales Report: Sales trend analysis identifying top/least performers for business
-  decisions. Tech: MySQL, Tableau, Snowflake, SQL.
-- Customer Shopping Behavior Analysis: Retail transaction analysis of spending patterns,
-  segments, and product preferences using Python, SQL, and Power BI.
+- AROS – AI Reliability Overlay System (built & deployed; for BankUnited Atom Pink Tank): An enterprise AI hallucination-detection and output-validation layer between AI models and users. Extracts factual claims (GPT API + spaCy), verifies them via a RAG pipeline against trusted sources, and returns a confidence-annotated response (scoring weights: source authority 35%, semantic similarity 30%, recency 20%, corroboration 15%). Shipped as a web app and Chrome extension. Tech: Python, GPT API, spaCy/NLP, RAG, FastAPI, Chrome extension, HTML/CSS/JS. Live: https://aros-1.lovable.app/ , Code: https://github.com/Rithanya918/AROS
+- Payanam – Agentic AI Workflow Automation (shipped to production): An agentic travel assistant automating multi-step travel search via natural language, using GPT-3.5 for understanding and LangGraph for workflow orchestration; form-based and conversational modes. Tech: Python, GPT-3.5 (OpenAI), LangGraph, LangChain concepts, NLP, TensorFlow, AWS, Docker. Code: https://github.com/Rithanya918/Payanam
+- AI-Driven Dynamic Pricing Engine (built; for C&G): Pricing optimization using PyTorch + Transformer models for automated price recommendations and competitor monitoring, with an executive insights dashboard. Tech: PyTorch, Transformers (HuggingFace), FastAPI, Docker, Python. Code: https://github.com/Rithanya918/CGPricing/tree/master
+- Customer Booking Prediction Model – British Airways (built): Random Forest classifier predicting which customers complete bookings; 78% accuracy (F1-optimized), SMOTE for class imbalance. Tech: Python (Scikit-learn), Random Forest, Kafka, Redis, PostgreSQL. Code: https://github.com/Rithanya918/British-Airways_Predictive-Modeling-of-Customer-Bookings
+- NYC Restaurant Inspection Analysis (built): Interactive Tableau dashboard over 10,000+ inspection records using K-Means clustering and Moran's I spatial autocorrelation to surface geographic and performance patterns. Tech: Python (Pandas/Scikit-learn/SciPy), Tableau, Snowflake, SQL.
+- Additional analytics work: Pizza Sales Report (MySQL, Tableau, Snowflake) and Customer Shopping Behavior Analysis (Python, SQL, Power BI).
+
+# Skills
+
+- Product & Program Management: end-to-end backlog ownership, sprint planning/refinement/retros, release & multi-phase delivery, roadmaps, epics/user stories/acceptance criteria, DoR/DoD, defect triage, stakeholder management.
+- Business Analysis: requirements elicitation, AS-IS/TO-BE process mapping, RTM, functional/nonfunctional specs, UAT, workflow diagramming, business cases.
+- Data Analytics & BI: SQL (PostgreSQL, MySQL), ETL pipeline design, Power BI (data modeling, DAX), Tableau, Python (Pandas, NumPy, Scikit-learn), KPI definition, statistics (regression, A/B testing, clustering), data quality governance.
+- AI & Machine Learning: LLM/GPT API integration, agentic workflows (LangGraph, LangChain), RAG pipelines, model fine-tuning, prompt engineering, AI hallucination detection & governance, NLP (spaCy), Random Forest, human-in-the-loop design.
+- Agile & Scrum: full ceremony facilitation, Kanban, velocity tracking, SAFe familiarity, impediment removal, coaching, story splitting.
+- Tools: JIRA, Confluence, Azure DevOps, MS Project, Smartsheet, ServiceNow, Asana, Figma, Visio, Lucidchart.
+- Cloud: AWS (S3, Lambda, AI services), Microsoft Azure (AI-900), Oracle APEX, Oracle Integration Cloud, Snowflake.
+- Languages: SQL (advanced), Python (advanced), PyTorch (intermediate), TensorFlow (intermediate), JavaScript (basic), JSON.
 
 # Certifications
-- Professional Scrum Product Owner (PSPO) — Scrum.org (Feb 2026)
-- AWS Certified AI Practitioner — AWS (Jan 2026)
-- Microsoft Azure AI-900 — Microsoft Azure (Dec 2025)
-- Oracle APEX Cloud Developer Professional — Oracle (Jul 2025)
-- Oracle Cloud Infrastructure 2025 Data Science Professional — Oracle (Sep 2025)
-- Lean Six Sigma Black Belt (Level III) (Aug 2025)
-- Microsoft Business Analyst Professional — Coursera (Aug 2024)
+- Professional Scrum Product Owner I (PSPO I) — Scrum.org
+- Lean Six Sigma Black Belt (Level III)
+- AWS Certified AI Practitioner — Amazon Web Services
+- Oracle APEX Cloud Developer Professional — Oracle
+- Oracle Data Scientist Professional — Oracle
+- Microsoft Azure AI-900 — Microsoft
+- Snowflake Data Warehousing
 
-# Roles she is interested in
-Product Owner / Associate Product Manager, Business Analyst, AI/Analytics-focused product and
-strategy roles, and roles combining data, AI systems, and digital transformation.
+# Education
+- Master of Science in Information Systems (AI & Business Analytics) — Florida International University, Miami, FL (2025–2026), GPA 3.98/4.00; 2026 Outstanding Leadership Award (Graduate Level). Focus: AI/ML, LLMs & generative AI, model fine-tuning, BI & analytics, database design, statistics. Built AROS, Payanam, and predictive ML models during the program.
+- Non-Degree Graduate Coursework in Economics & Statistics — University of Central Florida, Orlando, FL, GPA 4.00/4.00.
+- Bachelor of Architecture — Anna University, India (2014–2019).
+
+# Awards & Recognition
+- Winner, BankUnited Atom Pink Tank competition (2026) — innovation challenge hosted at FIU, judged by BankUnited executives.
+- 2026 Outstanding Leadership Award (Graduate Level) — Florida International University, nominated by faculty for community leadership.
+- Volunteer: SOBEWFF 2026 (South Beach Wine & Food Festival); Pasumai Campus Environment Protection (MIDAS).
+
+# Methodologies & Strengths
+Agile/Scrum (expert), Kanban, SAFe (familiar), Waterfall, Lean Six Sigma / DMAIC (expert), Design Thinking, Requirements Engineering, Data Governance. Known for executive communication, technical-to-business translation, root-cause problem solving, comfort with ambiguity, influence without authority, and a continuous-improvement mindset.
+
+# Industry Exposure
+SaaS product delivery, EdTech (assessment & adaptive learning analytics), Financial Services (BankUnited innovation context), Healthcare-adjacent AI reliability (AROS context), Architecture/Construction (AEC), and Higher Education operations (PantherSoft/PeopleSoft).
 `;
