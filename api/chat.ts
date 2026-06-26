@@ -175,8 +175,18 @@ export default async function handler(req: any, res: any) {
       .trim();
 
     res.status(200).json({ reply: reply || "Sorry, I couldn't generate a response. Please try again." });
-  } catch (err) {
+  } catch (err: any) {
     console.error("chat error", err);
-    res.status(500).json({ error: "Something went wrong. Please try again." });
+    // TEMPORARY DIAGNOSTIC: surface the real upstream error.
+    res.status(500).json({
+      error: "Something went wrong. Please try again.",
+      debug: {
+        message: String(err?.message || err),
+        status: err?.status,
+        name: err?.name,
+        keyPrefix: (process.env.ANTHROPIC_API_KEY || "").slice(0, 7),
+        keyLen: (process.env.ANTHROPIC_API_KEY || "").length,
+      },
+    });
   }
 }
