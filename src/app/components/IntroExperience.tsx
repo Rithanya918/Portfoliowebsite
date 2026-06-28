@@ -30,6 +30,7 @@ const PROFILES = [
  */
 function notifyVisit(visit: {
   name: string;
+  email: string;
   company: string;
   profile: string;
   time: string;
@@ -99,6 +100,7 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
   const [phase, setPhase] = useState<Phase>("profiles");
   const [profile, setProfile] = useState<string>("");
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const nameInputRef = useRef<HTMLInputElement>(null);
 
@@ -115,6 +117,7 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
     const cleanName = name.trim();
+    const cleanEmail = email.trim();
     const cleanCompany = company.trim();
     if (!cleanName) {
       nameInputRef.current?.focus();
@@ -124,6 +127,7 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
     try {
       sessionStorage.setItem("rs-profile", profile);
       sessionStorage.setItem("rs-name", cleanName);
+      sessionStorage.setItem("rs-email", cleanEmail);
       sessionStorage.setItem("rs-company", cleanCompany);
     } catch {
       /* ignore */
@@ -131,6 +135,7 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
 
     notifyVisit({
       name: cleanName,
+      email: cleanEmail || "—",
       company: cleanCompany || "—",
       profile,
       time: new Date().toLocaleString(),
@@ -243,8 +248,21 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
                 className="mb-5 px-4 py-3 rounded-md bg-[#1a1a1a] text-white placeholder-white/30 border border-white/15 focus:border-[#e50914] focus:outline-none transition-colors"
               />
 
+              <label className="text-white/70 text-sm mb-2" htmlFor="visit-email">
+                Email <span className="text-white/30">(optional)</span>
+              </label>
+              <input
+                id="visit-email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="e.g. alex@company.com"
+                autoComplete="email"
+                className="mb-5 px-4 py-3 rounded-md bg-[#1a1a1a] text-white placeholder-white/30 border border-white/15 focus:border-[#e50914] focus:outline-none transition-colors"
+              />
+
               <label className="text-white/70 text-sm mb-2" htmlFor="visit-company">
-                Company / Organization
+                Company / Organization <span className="text-white/30">(optional)</span>
               </label>
               <input
                 id="visit-company"

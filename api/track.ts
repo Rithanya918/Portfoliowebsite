@@ -41,6 +41,7 @@ export default async function handler(req: any, res: any) {
     const entry = {
       time: String(body?.time ?? new Date().toLocaleString()).slice(0, 100),
       name: String(body?.name ?? "").slice(0, 200),
+      email: String(body?.email ?? "").slice(0, 200),
       company: String(body?.company ?? "").slice(0, 200),
       profile: String(body?.profile ?? "").slice(0, 50),
     };

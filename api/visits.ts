@@ -54,6 +54,7 @@ export default async function handler(req: any, res: any) {
       .filter(Boolean) as Array<{
       time: string;
       name: string;
+      email: string;
       company: string;
       profile: string;
     }>;
@@ -63,10 +64,12 @@ export default async function handler(req: any, res: any) {
       return;
     }
 
-    const lines = ["Timestamp,Name,Company,Profile"];
+    const lines = ["Timestamp,Name,Email,Company,Profile"];
     for (const r0 of rows) {
       lines.push(
-        [r0.time, r0.name, r0.company, r0.profile].map(csvCell).join(",")
+        [r0.time, r0.name, r0.email, r0.company, r0.profile]
+          .map(csvCell)
+          .join(",")
       );
     }
 
