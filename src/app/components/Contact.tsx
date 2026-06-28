@@ -6,10 +6,23 @@ export function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
+  // Pre-filled email draft opened when the Email button is clicked.
+  const emailSubject = "Let's connect";
+  const emailBody = `Hello Rithanya,
+
+This is [Your Name], from [Company Name]. I would like to have a conversation with you regarding ____________.
+
+Kindly reply back to this email at ____________.
+
+Thank you!`;
+  const emailHref = `mailto:rithanyasekar09@gmail.com?subject=${encodeURIComponent(
+    emailSubject
+  )}&body=${encodeURIComponent(emailBody)}`;
+
   const socialLinks = [
-    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/rithanya-sekar-/", color: "hover:text-[#0077B5]" },
-    { icon: Github, label: "GitHub", url: "https://github.com/Rithanya918", color: "hover:text-white" },
-    { icon: Mail, label: "Email", url: "mailto:rithanyasekar09@gmail.com", color: "hover:text-primary" },
+    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/rithanya-sekar-/", color: "hover:text-[#0077B5]", external: true },
+    { icon: Github, label: "GitHub", url: "https://github.com/Rithanya918", color: "hover:text-white", external: true },
+    { icon: Mail, label: "Email", url: emailHref, color: "hover:text-primary", external: false },
   ];
 
   return (
@@ -57,8 +70,8 @@ export function Contact() {
                 <motion.a
                   key={index}
                   href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={social.external ? "_blank" : undefined}
+                  rel={social.external ? "noopener noreferrer" : undefined}
                   className={`p-6 bg-card border border-border rounded-lg transition-all ${social.color}`}
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}
