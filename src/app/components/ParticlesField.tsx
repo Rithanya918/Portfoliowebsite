@@ -12,10 +12,10 @@ export function ParticlesField() {
 
   return (
     <div className="fixed inset-0 z-10 pointer-events-none overflow-hidden">
-      {[...Array(28)].map((_, i) => (
+      {[...Array(16)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-red-500/40 rounded-full"
+          className="absolute w-2 h-2 bg-red-500/40 rounded-full [will-change:transform]"
           initial={{
             x: Math.random() * width,
             y: Math.random() * height,

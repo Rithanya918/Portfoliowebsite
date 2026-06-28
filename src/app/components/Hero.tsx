@@ -27,17 +27,17 @@ export function Hero() {
 
       {/* Soft drifting color blobs */}
       <motion.div
-        className="absolute -top-40 -left-32 w-[42rem] h-[42rem] rounded-full bg-primary/25 blur-3xl"
+        className="absolute -top-40 -left-32 w-[42rem] h-[42rem] rounded-full bg-primary/25 blur-3xl [will-change:transform]"
         animate={{ x: [0, 90, 0], y: [0, 60, 0], scale: [1, 1.15, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute top-1/3 -right-44 w-[38rem] h-[38rem] rounded-full bg-red-700/20 blur-3xl"
+        className="absolute top-1/3 -right-44 w-[38rem] h-[38rem] rounded-full bg-red-700/20 blur-3xl [will-change:transform]"
         animate={{ x: [0, -70, 0], y: [0, 80, 0], scale: [1.1, 1, 1.1] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute -bottom-32 left-1/4 w-[36rem] h-[36rem] rounded-full bg-red-900/30 blur-3xl"
+        className="absolute -bottom-32 left-1/4 w-[36rem] h-[36rem] rounded-full bg-red-900/30 blur-3xl [will-change:transform]"
         animate={{ x: [0, 60, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       />

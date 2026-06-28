@@ -1,0 +1,29 @@
+/**
+ * Performance helpers.
+ *
+ * content-visibility:auto lets the browser SKIP layout, paint, and rendering
+ * for off-screen sections until the user scrolls near them — a big reduction
+ * in initial render work. `contain-intrinsic-size: auto <h>` reserves an
+ * estimated height up front (and remembers the real height after first paint)
+ * so the scrollbar doesn't jump.
+ *
+ * Applied to every main section except the hero (which is above the fold).
+ */
+main > section:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+/**
+ * Respect users who prefer reduced motion: drop the continuous ambient
+ * animations entirely. Also a meaningful CPU/GPU saving on low-end devices.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
