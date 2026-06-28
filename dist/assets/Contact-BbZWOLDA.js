@@ -1,4 +1,4 @@
-import{r as l,j as e}from"./react-vendor-_4h8QMpT.js";import{L as c,G as m,a as d}from"./icons-DE7WISKe.js";import{u as x,m as t}from"./motion-DiVq3z4v.js";function _(){const n=l.useRef(null),i=x(n,{once:!0,amount:.2}),r=`mailto:rithanyasekar09@gmail.com?subject=${encodeURIComponent("Let's connect")}&body=${encodeURIComponent(`Hello Rithanya,
+import{r as l,j as e}from"./react-vendor-_4h8QMpT.js";import{L as c,G as m,a as d}from"./icons-lXIJQ2cP.js";import{u as x,m as t}from"./motion-DiVq3z4v.js";function _(){const n=l.useRef(null),i=x(n,{once:!0,amount:.2}),r=`mailto:rithanyasekar09@gmail.com?subject=${encodeURIComponent("Let's connect")}&body=${encodeURIComponent(`Hello Rithanya,
 
 This is [Your Name], from [Company Name]. I would like to have a conversation with you regarding ____________.
 

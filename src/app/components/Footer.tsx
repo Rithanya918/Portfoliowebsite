@@ -1,9 +1,24 @@
 import { motion } from "motion/react";
-import { Heart, ArrowUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Heart, ArrowUp, ArrowDown } from "lucide-react";
 
 export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  // Track whether the visitor has scrolled past the landing view.
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 300);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const handleScrollButton = () => {
+    if (scrolled) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+    }
   };
 
   return (
@@ -82,7 +97,8 @@ export function Footer() {
 
       {/* Scroll to Top Button */}
       <motion.button
-        onClick={scrollToTop}
+        onClick={handleScrollButton}
+        aria-label={scrolled ? "Scroll to top" : "Scroll down"}
         className="fixed bottom-8 right-8 p-4 bg-primary text-white rounded-full shadow-lg hover:shadow-xl transition-shadow z-50"
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -90,7 +106,11 @@ export function Footer() {
         whileHover={{ scale: 1.1, y: -5 }}
         whileTap={{ scale: 0.9 }}
       >
-        <ArrowUp className="w-6 h-6" />
+        {scrolled ? (
+          <ArrowUp className="w-6 h-6" />
+        ) : (
+          <ArrowDown className="w-6 h-6" />
+        )}
       </motion.button>
     </footer>
   );
