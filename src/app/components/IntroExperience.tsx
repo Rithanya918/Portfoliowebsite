@@ -229,10 +229,10 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
               transition={{ duration: 0.45 }}
             >
               <h2 className="text-white text-2xl md:text-4xl font-semibold mb-2 text-center">
-                Before we roll the credits…
+                Help me know you
               </h2>
               <p className="text-white/50 text-center mb-8">
-                Tell me who's stopping by.
+                and keep a track of visits.
               </p>
 
               <label className="text-white/70 text-sm mb-2" htmlFor="visit-name">
