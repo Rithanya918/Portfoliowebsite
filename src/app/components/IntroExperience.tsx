@@ -1,21 +1,15 @@
 import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect, useCallback } from "react";
-import { Briefcase, Code2, User } from "lucide-react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { Briefcase, User, ArrowRight } from "lucide-react";
 
-type Phase = "profiles" | "tudum" | "done";
+type Phase = "profiles" | "form" | "welcome" | "done";
 
 const PROFILES = [
   {
-    id: "recruiter",
-    label: "Recruiter",
+    id: "hr",
+    label: "HR",
     icon: Briefcase,
     gradient: "linear-gradient(135deg, #e50914 0%, #7f1d1d 100%)",
-  },
-  {
-    id: "engineer",
-    label: "Engineer",
-    icon: Code2,
-    gradient: "linear-gradient(135deg, #b81d24 0%, #4a1010 100%)",
   },
   {
     id: "visitor",
@@ -25,12 +19,48 @@ const PROFILES = [
   },
 ];
 
+/** Inbox that should receive visit notifications once email is wired up. */
+const NOTIFY_EMAIL = "rithanyasekar09@gmail.com";
+
 /**
- * Plays a short, synthesized "tudum"-style cue using the Web Audio API.
- * No external/copyrighted audio asset required. Safe to call from a user
- * gesture (the profile click), which satisfies browser autoplay rules.
+ * Fire-and-forget visit notification.
+ *
+ * EMAIL IS NOT WIRED YET (user chose to skip for now). When ready, implement
+ * delivery here — e.g. POST to a Web3Forms endpoint, or to a /api/notify
+ * serverless function that uses Resend. Destination inbox: NOTIFY_EMAIL.
+ *
+ * Example (Web3Forms):
+ *   await fetch("https://api.web3forms.com/submit", {
+ *     method: "POST",
+ *     headers: { "Content-Type": "application/json" },
+ *     body: JSON.stringify({
+ *       access_key: "<YOUR_WEB3FORMS_ACCESS_KEY>",
+ *       subject: `Portfolio visit: ${visit.name} (${visit.profile})`,
+ *       from_name: "Portfolio site",
+ *       Name: visit.name,
+ *       Company: visit.company,
+ *       Profile: visit.profile,
+ *       Time: visit.time,
+ *     }),
+ *   });
  */
-function playTudum() {
+function notifyVisit(visit: {
+  name: string;
+  company: string;
+  profile: string;
+  time: string;
+}) {
+  // Logged for now so the captured data is visible during development.
+  // eslint-disable-next-line no-console
+  console.info("[visit] would notify", NOTIFY_EMAIL, visit);
+}
+
+/**
+ * Plays a soft, gentle ascending chime using the Web Audio API.
+ * No external/copyrighted audio asset required. Safe to call from a user
+ * gesture (form submit), which satisfies browser autoplay rules.
+ */
+function playChime() {
   try {
     const AudioCtx =
       window.AudioContext ||
@@ -38,15 +68,12 @@ function playTudum() {
         .webkitAudioContext;
     if (!AudioCtx) return;
     const ctx = new AudioCtx();
-    // Context can start "suspended" even inside a gesture — force it on.
     ctx.resume?.();
 
-    // Gentle master volume so the whole cue stays soft.
     const master = ctx.createGain();
     master.gain.value = 0.22;
     master.connect(ctx.destination);
 
-    // A soft bell-like note: pure sine, slow attack, long airy fade.
     const note = (startOffset: number, freq: number, duration: number) => {
       const t = ctx.currentTime + startOffset;
       const osc = ctx.createOscillator();
@@ -54,8 +81,8 @@ function playTudum() {
       osc.type = "sine";
       osc.frequency.value = freq;
       gain.gain.setValueAtTime(0.0001, t);
-      gain.gain.linearRampToValueAtTime(1, t + 0.06); // smooth swell in
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + duration); // long fade
+      gain.gain.linearRampToValueAtTime(1, t + 0.06);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + duration);
       osc.connect(gain);
       gain.connect(master);
       osc.start(t);
@@ -77,6 +104,10 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   const [phase, setPhase] = useState<Phase>("profiles");
+  const [profile, setProfile] = useState<string>("");
+  const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   const finish = useCallback(() => {
     setPhase("done");
@@ -84,46 +115,72 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
   }, [onComplete]);
 
   const selectProfile = (id: string) => {
+    setProfile(id);
+    setPhase("form");
+  };
+
+  const submitForm = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cleanName = name.trim();
+    const cleanCompany = company.trim();
+    if (!cleanName) {
+      nameInputRef.current?.focus();
+      return;
+    }
+
     try {
-      sessionStorage.setItem("rs-profile", id);
+      sessionStorage.setItem("rs-profile", profile);
+      sessionStorage.setItem("rs-name", cleanName);
+      sessionStorage.setItem("rs-company", cleanCompany);
     } catch {
       /* ignore */
     }
+
+    notifyVisit({
+      name: cleanName,
+      company: cleanCompany || "—",
+      profile,
+      time: new Date().toLocaleString(),
+    });
+
     if (prefersReduced) {
       finish();
       return;
     }
-    playTudum();
-    setPhase("tudum");
+    playChime();
+    setPhase("welcome");
   };
 
-  // Auto-advance after the tudum animation runs its course.
+  // Focus the name field when the form appears.
   useEffect(() => {
-    if (phase !== "tudum") return;
-    const timer = setTimeout(finish, 2600);
+    if (phase === "form") {
+      const id = setTimeout(() => nameInputRef.current?.focus(), 350);
+      return () => clearTimeout(id);
+    }
+  }, [phase]);
+
+  // Auto-advance after the welcome card has been shown.
+  useEffect(() => {
+    if (phase !== "welcome") return;
+    const timer = setTimeout(finish, 3200);
     return () => clearTimeout(timer);
   }, [phase, finish]);
+
+  const firstName = name.trim().split(/\s+/)[0] || "there";
 
   return (
     <AnimatePresence>
       {phase !== "done" && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black overflow-hidden"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black overflow-hidden px-6"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
-          {/* Skip */}
-          <button
-            onClick={finish}
-            className="absolute top-6 right-6 z-10 px-4 py-2 text-sm text-white/60 hover:text-white border border-white/15 hover:border-white/40 rounded-md transition-colors"
-          >
-            Skip intro
-          </button>
-
+          {/* ---------- Profiles ---------- */}
           {phase === "profiles" && (
             <motion.div
-              className="flex flex-col items-center px-6"
+              className="flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
@@ -163,42 +220,128 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
             </motion.div>
           )}
 
-          {phase === "tudum" && (
-            <div className="relative flex items-center justify-center">
+          {/* ---------- Name / Company form ---------- */}
+          {phase === "form" && (
+            <motion.form
+              onSubmit={submitForm}
+              className="w-full max-w-md flex flex-col"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.45 }}
+            >
+              <h2 className="text-white text-2xl md:text-4xl font-semibold mb-2 text-center">
+                Before we roll the credits…
+              </h2>
+              <p className="text-white/50 text-center mb-8">
+                Tell me who's stopping by.
+              </p>
+
+              <label className="text-white/70 text-sm mb-2" htmlFor="visit-name">
+                Your name
+              </label>
+              <input
+                id="visit-name"
+                ref={nameInputRef}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="e.g. Alex Johnson"
+                autoComplete="name"
+                className="mb-5 px-4 py-3 rounded-md bg-[#1a1a1a] text-white placeholder-white/30 border border-white/15 focus:border-[#e50914] focus:outline-none transition-colors"
+              />
+
+              <label className="text-white/70 text-sm mb-2" htmlFor="visit-company">
+                Company / Organization
+              </label>
+              <input
+                id="visit-company"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                placeholder="e.g. Netflix"
+                autoComplete="organization"
+                className="mb-8 px-4 py-3 rounded-md bg-[#1a1a1a] text-white placeholder-white/30 border border-white/15 focus:border-[#e50914] focus:outline-none transition-colors"
+              />
+
+              <motion.button
+                type="submit"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-3 rounded-md bg-[#e50914] text-white font-semibold hover:bg-[#c40812] transition-colors"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Continue
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+              </motion.button>
+            </motion.form>
+          )}
+
+          {/* ---------- Personalized welcome card ---------- */}
+          {phase === "welcome" && (
+            <div className="relative flex items-center justify-center w-full">
               {/* Red glow burst */}
               <motion.div
-                className="absolute w-[40rem] h-[40rem] rounded-full"
+                className="absolute w-[40rem] h-[40rem] rounded-full pointer-events-none"
                 style={{
                   background:
                     "radial-gradient(circle, rgba(229,9,20,0.45) 0%, transparent 60%)",
                 }}
                 initial={{ scale: 0.2, opacity: 0 }}
-                animate={{ scale: [0.2, 1.4, 1.1], opacity: [0, 0.9, 0] }}
+                animate={{ scale: [0.2, 1.4, 1.1], opacity: [0, 0.9, 0.3] }}
                 transition={{ duration: 2.4, ease: "easeOut" }}
               />
 
-              {/* Name zoom — Netflix-logo style */}
-              <motion.h1
-                className="relative font-bold tracking-tight text-center select-none"
+              <motion.div
+                className="relative z-10 w-full max-w-lg rounded-2xl border border-white/10 px-8 py-10 md:px-12 md:py-14 text-center shadow-2xl"
                 style={{
-                  color: "#e50914",
-                  textShadow: "0 0 40px rgba(229,9,20,0.6)",
-                  fontSize: "clamp(2.5rem, 12vw, 9rem)",
+                  background:
+                    "linear-gradient(160deg, #1a0d0d 0%, #2a0a0a 45%, #0b0b0d 100%)",
                 }}
-                initial={{ scale: 2.6, opacity: 0, letterSpacing: "0.3em" }}
-                animate={{
-                  scale: [2.6, 1, 1, 1.25],
-                  opacity: [0, 1, 1, 0],
-                  letterSpacing: ["0.3em", "0em", "0em", "0.05em"],
-                }}
-                transition={{
-                  duration: 2.5,
-                  times: [0, 0.35, 0.8, 1],
-                  ease: "easeInOut",
-                }}
+                initial={{ scale: 0.7, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 220, damping: 20 }}
               >
-                Welcome!
-              </motion.h1>
+                <motion.p
+                  className="uppercase tracking-[0.3em] text-xs mb-4"
+                  style={{ color: "#e50914" }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.25 }}
+                >
+                  Now Playing
+                </motion.p>
+
+                <motion.h1
+                  className="font-bold text-white leading-tight"
+                  style={{
+                    textShadow: "0 0 40px rgba(229,9,20,0.5)",
+                    fontSize: "clamp(2rem, 7vw, 3.75rem)",
+                  }}
+                  initial={{ scale: 1.3, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  Welcome, {firstName}!
+                </motion.h1>
+
+                {company.trim() && (
+                  <motion.p
+                    className="text-white/60 mt-4 text-lg"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    from {company.trim()}
+                  </motion.p>
+                )}
+
+                <motion.p
+                  className="text-white/40 mt-6 text-sm"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  Enjoy the show.
+                </motion.p>
+              </motion.div>
             </div>
           )}
         </motion.div>
