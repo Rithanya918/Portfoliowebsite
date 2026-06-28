@@ -19,30 +19,14 @@ const PROFILES = [
   },
 ];
 
-/** Inbox that should receive visit notifications once email is wired up. */
-const NOTIFY_EMAIL = "rithanyasekar09@gmail.com";
-
 /**
- * Fire-and-forget visit notification.
+ * Fire-and-forget visit recording.
  *
- * EMAIL IS NOT WIRED YET (user chose to skip for now). When ready, implement
- * delivery here — e.g. POST to a Web3Forms endpoint, or to a /api/notify
- * serverless function that uses Resend. Destination inbox: NOTIFY_EMAIL.
+ * Sends the captured visitor details to the /api/track serverless function,
+ * which appends a row to the linked Google Sheet. Failures are swallowed so a
+ * tracking hiccup never blocks the visitor's experience.
  *
- * Example (Web3Forms):
- *   await fetch("https://api.web3forms.com/submit", {
- *     method: "POST",
- *     headers: { "Content-Type": "application/json" },
- *     body: JSON.stringify({
- *       access_key: "<YOUR_WEB3FORMS_ACCESS_KEY>",
- *       subject: `Portfolio visit: ${visit.name} (${visit.profile})`,
- *       from_name: "Portfolio site",
- *       Name: visit.name,
- *       Company: visit.company,
- *       Profile: visit.profile,
- *       Time: visit.time,
- *     }),
- *   });
+ * Requires SHEET_WEBHOOK_URL to be set in Vercel (see VISIT_TRACKING.md).
  */
 function notifyVisit(visit: {
   name: string;
@@ -50,9 +34,18 @@ function notifyVisit(visit: {
   profile: string;
   time: string;
 }) {
-  // Logged for now so the captured data is visible during development.
-  // eslint-disable-next-line no-console
-  console.info("[visit] would notify", NOTIFY_EMAIL, visit);
+  try {
+    fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(visit),
+      keepalive: true,
+    }).catch(() => {
+      /* tracking is best-effort */
+    });
+  } catch {
+    /* ignore */
+  }
 }
 
 /**
