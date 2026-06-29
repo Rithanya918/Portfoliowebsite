@@ -119,10 +119,6 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
     const cleanName = name.trim();
     const cleanEmail = email.trim();
     const cleanCompany = company.trim();
-    if (!cleanName) {
-      nameInputRef.current?.focus();
-      return;
-    }
 
     try {
       sessionStorage.setItem("rs-profile", profile);
@@ -232,7 +228,7 @@ export function IntroExperience({ onComplete }: { onComplete: () => void }) {
                 Help me know you
               </h2>
               <p className="text-white/50 text-center mb-8">
-                and keep a track of visits.
+                Completely optional.
               </p>
 
               <label className="text-white/70 text-sm mb-2" htmlFor="visit-name">
