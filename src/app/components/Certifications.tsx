@@ -7,7 +7,14 @@ export function Certifications() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const certifications = [
-            {
+    {
+      title: "Microsoft Certified: Power BI Data Analyst Associate",
+      issuer: "Microsoft",
+      date: "Issued July 2026",
+      image: "https://github.com/user-attachments/assets/7c149af3-dc3a-458b-ad14-4bdb9f658b75",
+      url: "https://learn.microsoft.com/en-us/users/rithanyasekar-8427/credentials/c11084fb250741fd",
+    },
+    {
       title: "Professional Scrum Product Owner (PSPO)",
       issuer: "Scrum.org",
       date: "Issued Feb 2026",
